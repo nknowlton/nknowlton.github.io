@@ -22,7 +22,7 @@ minima:
     # facebook: jekyll
     # flickr:   jekyll
     # instagram: jekyll
-   linkedin: nsknowlton
+    linkedin: nsknowlton
     # pinterest: jekyll
     # youtube: jekyll
     # youtube_channel: UC8CXR0-3I70i1tfPg1PAE1g
@@ -46,6 +46,6 @@ minima:
 # Build settings
 theme: minima
 
-plugins:
+plugin_dir:
  - jekyll-feed
  - jekyll-seo-tag
