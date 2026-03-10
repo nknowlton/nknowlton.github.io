@@ -4,25 +4,12 @@ title: Teaching
 permalink: /teaching/
 ---
 
-## Teaching resources
+## Courses and resources
 
-Lecture content is published from Quarto course repositories via `gh-pages`.
-This page is a styled index only, so lecture content remains managed in each course repo.
+Teaching materials are hosted under course-code paths on this domain.
 
-<div class="teaching-grid">
-  <article class="panel teaching-card">
-    <h3>161.251</h3>
-    <p>Course hub and published teaching material.</p>
-    <a class="btn" href="{{ '/161251/' | relative_url }}">Open course site</a>
-  </article>
+- [161.251 resources]({{ '/161251/' | relative_url }})
+- [161.762 resources]({{ '/161762/' | relative_url }})
+- [161.762 lecture 1 example]({{ '/161762/slides/lecture1.html' | relative_url }})
 
-  <article class="panel teaching-card">
-    <h3>161.762</h3>
-    <p>Quarto-published slides, notes, and linked lecture pages.</p>
-    <a class="btn" href="{{ '/161762/' | relative_url }}">Open course site</a>
-  </article>
-</div>
-
-## Notes
-- Keep this page as a clean entry point to each course site.
-- Add/update only course paths here; lecture content stays in Quarto repos.
+> Note: add or edit links as course sites evolve.

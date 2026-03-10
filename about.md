@@ -4,21 +4,17 @@ title: About
 permalink: /about/
 ---
 
-## About the Knowlton Lab
+## Knowlton Lab
 
-The Knowlton Lab develops statistical and machine-learning approaches for translational biomedical and fertility-focused research. We work across University of Auckland and Massey University collaborations.
+The Knowlton Lab focuses on applied statistics and machine learning for translational biomedical problems.
 
-### Methodological approach
-- Build models that are both **predictive** and **interpretable**.
-- Prioritise validation design, uncertainty quantification, and robust out-of-sample assessment.
-- Keep workflows reproducible and practical for real-world researchers and clinicians.
-
-### Domains of application
-- Breast imaging and cancer risk modelling.
-- Embryology and IVF decision support.
-- Sperm phenotyping and livestock fertility analytics.
+### Core areas
+- Breast imaging, density, and risk prediction.
+- Computer vision for embryo assessment and IVF support.
+- Statistical learning workflows that are interpretable and clinically grounded.
 
 ### Contact
-- **Dr Nick Knowlton** — n.knowlton@auckland.ac.nz
+- **Nick Knowlton** — n.knowlton@auckland.ac.nz
+- University of Auckland and Massey University affiliations.
 
-> Legacy references to the old Print group have been removed.
+> This replaces legacy references to the old Print group.

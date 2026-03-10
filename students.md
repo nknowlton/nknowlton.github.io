@@ -6,18 +6,14 @@ permalink: /students/
 
 ## Current students
 
-- **[Placeholder: PhD student name]** — [Project title], [brief project summary].
-- **[Placeholder: PhD student name]** — [Project title], [brief project summary].
-- **[Placeholder: MSc student name]** — [Project title], [brief project summary].
-- **[Placeholder: Honours student name]** — [Project title], [brief project summary].
+- **[Placeholder: PhD student name]** — Project title and one-line summary.
+- **[Placeholder: MSc student name]** — Project title and one-line summary.
+- **[Placeholder: Honours student name]** — Project title and one-line summary.
 
 ## Alumni
 
-- **[Placeholder: Alumni name]** — [Degree], [years], [current role].
-- **[Placeholder: Alumni name]** — [Degree], [years], [notable output].
-- **[Placeholder: Alumni name]** — [Degree], [years], [current role].
+- **[Placeholder: Alumni name]** — Degree, years, and destination.
+- **[Placeholder: Alumni name]** — Degree, years, and key output (paper/thesis/software).
 
-## Update notes
-- Replace placeholder text directly in this file.
-- Keep summaries to 1–2 lines for readability.
-- Add links to theses/papers where available.
+## How to update
+Replace placeholders as people join or complete.

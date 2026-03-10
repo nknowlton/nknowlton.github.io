@@ -4,16 +4,13 @@ title: Research
 permalink: /research/
 ---
 
-## Research themes
+## Current directions
 
-### Breast cancer and imaging AI
-Interpretable machine-learning models for mammography-derived risk prediction, density-informed modelling, and clinically useful decision support.
+### 1) Breast cancer and imaging AI
+Interpretable models for mammography risk prediction and decision support.
 
-### Reproductive biology and IVF
-Computer-vision and statistical learning pipelines for embryo assessment, morphokinetics, and outcomes-oriented prediction.
+### 2) Reproductive biology and IVF
+Computer-vision and statistical pipelines for embryo and sperm phenotyping.
 
-### Fertility analytics and phenotyping
-Data-rich modelling for sperm motility and reproductive performance, with attention to domain shift and measurement reliability.
-
-### Translational biostatistics
-Design and evaluation methods that make models reliable, auditable, and deployable beyond narrow benchmark settings.
+### 3) Robust translational statistics
+Validation, uncertainty, and deployment-aware modelling in clinical and biological settings.
