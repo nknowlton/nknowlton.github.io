@@ -1,0 +1,25 @@
+{
+  "name": "knowlton-lab-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.3.1",
+    "astro": "^5.5.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.1",
+    "tailwindcss": "^4.1.1",
+    "typescript": "^5.8.2",
+    "yargs-parser": "^21.1.1"
+  }
+}

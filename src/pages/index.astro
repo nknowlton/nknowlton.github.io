@@ -1,0 +1,9 @@
+---
+import HomeView from "../components/HomeView.astro";
+import { defaultLocale } from "../data/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout locale={defaultLocale} page="home">
+  <HomeView locale={defaultLocale} />
+</BaseLayout>

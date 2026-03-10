@@ -1,0 +1,159 @@
+---
+import { publications } from "../data/publications";
+import {
+  homeContent,
+  pageMeta,
+  siteMeta,
+  uiText,
+  type Locale
+} from "../data/site";
+import { getLocalizedPath } from "../lib/routing";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const content = homeContent[locale];
+const meta = pageMeta.home[locale];
+const ui = uiText[locale];
+const featuredPublications = publications.slice(0, 3);
+---
+
+<section class="shell py-10 sm:py-14">
+  <div class="grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
+    <article class="panel relative overflow-hidden px-6 py-8 sm:px-8 sm:py-10">
+      <div class="absolute right-[-4rem] top-[-4rem] h-48 w-48 rounded-full bg-coral-400/18 blur-3xl"></div>
+      <div class="absolute bottom-[-5rem] left-[14rem] h-56 w-56 rounded-full bg-aqua-400/16 blur-3xl"></div>
+      <p class="eyebrow">{meta.eyebrow}</p>
+      <h1 class="mt-4 max-w-4xl text-5xl leading-[0.95] text-sand-100 sm:text-6xl">
+        {content.title}
+      </h1>
+      <p class="muted-copy mt-6 max-w-3xl text-lg">{content.lead}</p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a class="cta-primary" href={getLocalizedPath(locale, content.primaryCta.href)}>
+          {content.primaryCta.label}
+        </a>
+        <a class="cta-secondary" href={getLocalizedPath(locale, content.secondaryCta.href)}>
+          {content.secondaryCta.label}
+        </a>
+        <a class="cta-secondary" href={getLocalizedPath(locale, content.tertiaryCta.href)}>
+          {content.tertiaryCta.label}
+        </a>
+      </div>
+
+      <div class="mt-10 grid gap-3 sm:grid-cols-3">
+        {content.stats.map((stat) => (
+          <div class="rounded-[1.4rem] border border-white/10 bg-ink-900/58 px-4 py-4">
+            <div class="text-3xl font-semibold text-sand-100">{stat.value}</div>
+            <div class="mt-1 text-sm text-sand-100/60">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </article>
+
+    <aside class="panel px-6 py-8 sm:px-7">
+      <p class="eyebrow">{ui.currentFocus}</p>
+      <h2 class="mt-4 text-3xl text-sand-100">Programmes built for messy data and real decisions.</h2>
+      <ul class="mt-6 space-y-4">
+        {content.focusItems.map((item) => (
+          <li class="flex gap-3">
+            <span class="mt-2 h-2.5 w-2.5 rounded-full bg-gold-300"></span>
+            <span class="text-base leading-7 text-sand-100/76">{item}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-8 flex flex-wrap gap-2">
+        {siteMeta.institutions.map((institution) => (
+          <span class="chip">{institution}</span>
+        ))}
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="shell pb-10">
+  <div class="section-grid">
+    {content.pillars.map((pillar) => (
+      <article class="panel px-6 py-6">
+        <p class="eyebrow">{pillar.title}</p>
+        <h2 class="card-title mt-3">{pillar.title}</h2>
+        <p class="muted-copy mt-3">{pillar.body}</p>
+        <a
+          class="mt-6 inline-flex text-sm font-semibold text-aqua-400 hover:text-aqua-400/80"
+          href={getLocalizedPath(locale, pillar.href)}
+        >
+          {ui.exploreAll}
+        </a>
+      </article>
+    ))}
+  </div>
+</section>
+
+<section class="shell pb-10">
+  <div class="mb-5 flex items-end justify-between gap-4">
+    <div>
+      <p class="eyebrow">{ui.selectedWork}</p>
+      <h2 class="section-title mt-3 text-sand-100">Publications are now part of the site, not hidden behind a profile link.</h2>
+    </div>
+    <a
+      class="hidden text-sm font-semibold text-aqua-400 hover:text-aqua-400/80 sm:inline-flex"
+      href={getLocalizedPath(locale, "publications")}
+    >
+      {ui.exploreAll}
+    </a>
+  </div>
+
+  <div class="section-grid">
+    {featuredPublications.map((publication) => (
+      <article class="panel px-6 py-6">
+        <div class="flex items-center justify-between gap-4">
+          <span class="chip">{publication.year}</span>
+          <span class="text-xs uppercase tracking-[0.18em] text-sand-100/45">{publication.venue}</span>
+        </div>
+        <h3 class="mt-5 text-2xl text-sand-100">{publication.title}</h3>
+        <p class="muted-copy mt-4">{publication.summary}</p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          {publication.tags.map((tag) => (
+            <span class="chip">{tag}</span>
+          ))}
+        </div>
+        <a
+          class="mt-6 inline-flex text-sm font-semibold text-aqua-400 hover:text-aqua-400/80"
+          href={publication.href}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {ui.readAbstract}
+        </a>
+      </article>
+    ))}
+  </div>
+</section>
+
+<section class="shell pb-16">
+  <div class="panel grid gap-6 px-6 py-8 sm:px-8 lg:grid-cols-[1fr_0.9fr]">
+    <div>
+      <p class="eyebrow">Profiles and contact</p>
+      <h2 class="section-title mt-3 text-sand-100">Cross-institutional work, one cleaner front door.</h2>
+      <p class="muted-copy mt-4 max-w-2xl">
+        The site now brings research themes, publications, teaching resources, and supervision into one cohesive experience while keeping external profile links easy to reach.
+      </p>
+    </div>
+
+    <div class="grid gap-3 sm:grid-cols-2">
+      {siteMeta.socialLinks.map((link) => (
+        <a
+          href={link.href}
+          class="rounded-[1.35rem] border border-white/10 bg-white/5 px-4 py-4 text-sm text-sand-100/72 transition hover:border-coral-400/35 hover:text-sand-100"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+---
+import { siteMeta, type Locale } from "../data/site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale: _locale } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-white/10 py-12">
+  <div class="shell grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+    <div class="space-y-3">
+      <p class="eyebrow">Contact</p>
+      <h2 class="text-3xl text-sand-100">Collaborate on translational methods that can survive reality.</h2>
+      <a class="text-lg text-aqua-400 hover:text-aqua-400/80" href={`mailto:${siteMeta.email}`}>
+        {siteMeta.email}
+      </a>
+      <p class="text-sm text-sand-100/55">
+        {siteMeta.institutions.join(" | ")} | {currentYear}
+      </p>
+    </div>
+
+    <div class="grid gap-3 sm:grid-cols-2">
+      {siteMeta.socialLinks.map((link) => (
+        <a
+          href={link.href}
+          class="rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-sand-100/72 transition hover:border-aqua-400/35 hover:text-sand-100"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</footer>

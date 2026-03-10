@@ -1,0 +1,21 @@
+---
+import HomeView from "../../components/HomeView.astro";
+import { isLocale, secondaryLocales, type Locale } from "../../data/site";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return secondaryLocales.map((locale) => ({
+    params: { locale }
+  }));
+}
+
+const localeParam = Astro.params.locale ?? "";
+
+if (!isLocale(localeParam)) {
+  throw new Error(`Unsupported locale: ${localeParam}`);
+}
+---
+
+<BaseLayout locale={localeParam as Locale} page="home">
+  <HomeView locale={localeParam as Locale} />
+</BaseLayout>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Knowlton Lab">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7cd4d0" />
+      <stop offset="100%" stop-color="#ff8a67" />
+    </linearGradient>
+  </defs>
+  <rect width="96" height="96" rx="24" fill="#09111d" />
+  <path d="M27 23h11v50H27zM44 23h11v20l16-20h14L63 49l24 24H72L55 56v17H44z" fill="url(#g)" />
+</svg>

@@ -1,0 +1,35 @@
+---
+import SectionPageView from "../../components/SectionPageView.astro";
+import {
+  isLocale,
+  isPageSlug,
+  pageSlugs,
+  secondaryLocales,
+  type Locale,
+  type PageSlug
+} from "../../data/site";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return secondaryLocales.flatMap((locale) =>
+    pageSlugs.map((slug) => ({
+      params: { locale, slug }
+    }))
+  );
+}
+
+const localeParam = Astro.params.locale ?? "";
+const slugParam = Astro.params.slug ?? "";
+
+if (!isLocale(localeParam)) {
+  throw new Error(`Unsupported locale: ${localeParam}`);
+}
+
+if (!isPageSlug(slugParam)) {
+  throw new Error(`Unsupported page slug: ${slugParam}`);
+}
+---
+
+<BaseLayout locale={localeParam as Locale} page={slugParam as PageSlug}>
+  <SectionPageView locale={localeParam as Locale} page={slugParam as PageSlug} />
+</BaseLayout>

@@ -1,0 +1,21 @@
+---
+import SectionPageView from "../components/SectionPageView.astro";
+import { defaultLocale, isPageSlug, pageSlugs, type PageSlug } from "../data/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return pageSlugs.map((slug) => ({
+    params: { slug }
+  }));
+}
+
+const slug = Astro.params.slug ?? "";
+
+if (!isPageSlug(slug)) {
+  throw new Error(`Unsupported page slug: ${slug}`);
+}
+---
+
+<BaseLayout locale={defaultLocale} page={slug as PageSlug}>
+  <SectionPageView locale={defaultLocale} page={slug as PageSlug} />
+</BaseLayout>

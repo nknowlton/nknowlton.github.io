@@ -1,5 +1,10 @@
+.astro
 .bundle
 .sass-cache
+dist
+node_modules
 Gemfile.lock
 _site
 *.gem
+
+.npm-cache/

@@ -1,0 +1,242 @@
+---
+import {
+  aboutContent,
+  pageMeta,
+  publicationContent,
+  researchThemes,
+  siteMeta,
+  studentGroups,
+  teachingContent,
+  uiText,
+  type Locale,
+  type PageSlug
+} from "../data/site";
+
+interface Props {
+  locale: Locale;
+  page: PageSlug;
+}
+
+const { locale, page } = Astro.props;
+const meta = pageMeta[page][locale];
+const ui = uiText[locale];
+---
+
+<section class="shell py-10 sm:py-14">
+  <div class="panel px-6 py-8 sm:px-8 sm:py-10">
+    <p class="eyebrow">{meta.eyebrow}</p>
+    <h1 class="mt-4 max-w-4xl text-5xl leading-[0.98] text-sand-100 sm:text-6xl">{meta.title}</h1>
+    <p class="muted-copy mt-6 max-w-3xl text-lg">{meta.description}</p>
+  </div>
+</section>
+
+{page === "about" && (
+  <section class="shell pb-16">
+    <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <article class="panel px-6 py-8 sm:px-8">
+        <h2 class="section-title text-sand-100">Knowlton Lab</h2>
+        <p class="muted-copy mt-4">{aboutContent.intro}</p>
+
+        <div class="mt-8 section-grid">
+          {aboutContent.principles.map((item) => (
+            <article class="rounded-[1.5rem] border border-white/10 bg-ink-900/56 px-5 py-5">
+              <h3 class="text-2xl text-sand-100">{item.title}</h3>
+              <p class="muted-copy mt-3">{item.body}</p>
+            </article>
+          ))}
+        </div>
+      </article>
+
+      <aside class="panel px-6 py-8 sm:px-7">
+        <p class="eyebrow">Affiliations</p>
+        <ul class="mt-5 space-y-4">
+          {aboutContent.affiliations.map((item) => (
+            <li class="flex gap-3">
+              <span class="mt-2 h-2.5 w-2.5 rounded-full bg-aqua-400"></span>
+              <span class="text-base leading-7 text-sand-100/76">{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="mt-8 rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+          <p class="eyebrow">Contact</p>
+          <a class="mt-3 block text-lg text-aqua-400 hover:text-aqua-400/80" href={`mailto:${siteMeta.email}`}>
+            {siteMeta.email}
+          </a>
+          <p class="mt-4 text-sm text-sand-100/60">
+            Applied statistics, machine learning, and translational biomedical collaboration.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+)}
+
+{page === "research" && (
+  <section class="shell pb-16">
+    <div class="section-grid">
+      {researchThemes.map((theme) => (
+        <article class="panel px-6 py-7">
+          <h2 class="card-title">{theme.title}</h2>
+          <p class="muted-copy mt-4">{theme.body}</p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            {theme.methods.map((method) => (
+              <span class="chip">{method}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+)}
+
+{page === "students" && (
+  <section class="shell pb-16">
+    <div class="grid gap-6 xl:grid-cols-[1fr_1fr_0.8fr]">
+      <article class="panel px-6 py-7">
+        <p class="eyebrow">PhD</p>
+        <h2 class="card-title mt-3">Current doctoral students</h2>
+        <ul class="mt-5 space-y-4">
+          {studentGroups.phd.map((student) => (
+            <li class="text-base leading-7 text-sand-100/76">{student}</li>
+          ))}
+        </ul>
+      </article>
+
+      <article class="panel px-6 py-7">
+        <p class="eyebrow">Masters</p>
+        <h2 class="card-title mt-3">Current Masters students</h2>
+        <ul class="mt-5 space-y-4">
+          {studentGroups.masters.map((student) => (
+            <li class="text-base leading-7 text-sand-100/76">
+              <a class="font-semibold text-aqua-400 hover:text-aqua-400/80" href={student.href}>
+                {student.label}
+              </a>
+              {" - "}
+              {student.detail}
+            </li>
+          ))}
+        </ul>
+      </article>
+
+      <aside class="panel px-6 py-7">
+        <p class="eyebrow">{ui.currentStudents}</p>
+        <h2 class="card-title mt-3">Mentoring priorities</h2>
+        <p class="muted-copy mt-4">{studentGroups.mentoring}</p>
+      </aside>
+    </div>
+  </section>
+)}
+
+{page === "teaching" && (
+  <section class="shell pb-16">
+    <div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+      <article class="panel px-6 py-7">
+        <p class="eyebrow">Courses</p>
+        <h2 class="card-title mt-3">Current teaching</h2>
+        <div class="mt-5 grid gap-4">
+          {teachingContent.courses.map((course) => (
+            <a
+              href={course.href}
+              class="rounded-[1.4rem] border border-white/10 bg-ink-900/56 px-5 py-5 transition hover:border-aqua-400/35"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div class="text-xl text-sand-100">{course.title}</div>
+              {course.note && <div class="mt-2 text-sm text-sand-100/56">{course.note}</div>}
+            </a>
+          ))}
+        </div>
+      </article>
+
+      <aside class="grid gap-6">
+        <article class="panel px-6 py-7">
+          <p class="eyebrow">{ui.courseResources}</p>
+          <h2 class="card-title mt-3">Hosted materials</h2>
+          <ul class="mt-5 space-y-4">
+            {teachingContent.resources.map((resource) => (
+              <li>
+                <a class="text-base text-aqua-400 hover:text-aqua-400/80" href={resource.href}>
+                  {resource.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </article>
+
+        <article class="panel px-6 py-7">
+          <p class="eyebrow">Approach</p>
+          <h2 class="card-title mt-3">How the courses are framed</h2>
+          <p class="muted-copy mt-4">{teachingContent.philosophy}</p>
+        </article>
+      </aside>
+    </div>
+  </section>
+)}
+
+{page === "publications" && (
+  <section class="shell pb-16">
+    <div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+      <article class="panel px-6 py-7">
+        <p class="eyebrow">Selected publications</p>
+        <h2 class="card-title mt-3">Recent work across imaging, fertility, and translational analytics</h2>
+        <p class="muted-copy mt-4">{publicationContent.intro}</p>
+
+        <div class="mt-6 space-y-4">
+          {publicationContent.featured.map((publication) => (
+            <article class="rounded-[1.5rem] border border-white/10 bg-ink-900/56 px-5 py-5">
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="chip">{publication.year}</span>
+                <span class="text-sm text-sand-100/56">{publication.venue}</span>
+              </div>
+              <h3 class="mt-4 text-2xl text-sand-100">{publication.title}</h3>
+              <p class="muted-copy mt-3">{publication.summary}</p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                {publication.tags.map((tag) => (
+                  <span class="chip">{tag}</span>
+                ))}
+              </div>
+              <a
+                class="mt-5 inline-flex text-sm font-semibold text-aqua-400 hover:text-aqua-400/80"
+                href={publication.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {ui.readAbstract}
+              </a>
+            </article>
+          ))}
+        </div>
+      </article>
+
+      <aside class="grid gap-6">
+        <article class="panel px-6 py-7">
+          <p class="eyebrow">Profiles</p>
+          <h2 class="card-title mt-3">Full publication record</h2>
+          <ul class="mt-5 space-y-4">
+            {publicationContent.externalProfiles.map((profile) => (
+              <li>
+                <a
+                  class="text-base text-aqua-400 hover:text-aqua-400/80"
+                  href={profile.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {profile.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </article>
+
+        <article class="panel px-6 py-7">
+          <p class="eyebrow">Coverage</p>
+          <h2 class="card-title mt-3">What is included here</h2>
+          <p class="muted-copy mt-4">
+            This page presents a curated site-level selection rather than a full bibliography. The broader record remains available through Google Scholar and ORCID.
+          </p>
+        </article>
+      </aside>
+    </div>
+  </section>
+)}

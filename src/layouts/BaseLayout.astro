@@ -1,0 +1,75 @@
+---
+import "../styles/global.css";
+
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import {
+  defaultLocale,
+  pageMeta,
+  siteMeta,
+  uiText,
+  type Locale,
+  type PageSlug
+} from "../data/site";
+import { getAlternateLinks, getCanonicalUrl } from "../lib/routing";
+
+interface Props {
+  locale: Locale;
+  page: "home" | PageSlug;
+}
+
+const { locale, page } = Astro.props;
+const meta = pageMeta[page][locale];
+const slug = page === "home" ? "" : page;
+const canonical = getCanonicalUrl(locale, slug);
+const alternates = getAlternateLinks(slug);
+const ui = uiText[locale];
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{`${meta.title} | ${siteMeta.name}`}</title>
+    <meta name="description" content={meta.description} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#09111d" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonical} />
+    {alternates.map((alternate) => (
+      <link
+        rel="alternate"
+        hreflang={alternate.locale}
+        href={alternate.href}
+      />
+    ))}
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={getCanonicalUrl(defaultLocale, slug)}
+    />
+    <meta property="og:title" content={`${meta.title} | ${siteMeta.name}`} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={siteMeta.name} />
+    <meta property="og:locale" content={locale === "en" ? "en_NZ" : "mi_NZ"} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <SiteHeader locale={locale} currentPage={page === "home" ? undefined : page} />
+    {locale !== defaultLocale && (
+      <div class="shell pt-6">
+        <div class="rounded-[1.5rem] border border-aqua-400/20 bg-aqua-400/8 px-5 py-4 text-sm text-sand-100/78">
+          <strong class="mr-2 text-sand-100">{ui.localeNoticeTitle}</strong>
+          {ui.localeNoticeBody}
+        </div>
+      </div>
+    )}
+    <main>
+      <slot />
+    </main>
+    <SiteFooter locale={locale} />
+  </body>
+</html>

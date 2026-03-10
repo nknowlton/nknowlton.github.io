@@ -1,0 +1,65 @@
+---
+import {
+  navigationLabels,
+  pageSlugs,
+  uiText,
+  type Locale,
+  type PageSlug
+} from "../data/site";
+import { getLocalizedPath } from "../lib/routing";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+
+interface Props {
+  locale: Locale;
+  currentPage?: PageSlug;
+}
+
+const { locale, currentPage } = Astro.props;
+const labels = navigationLabels[locale];
+const ui = uiText[locale];
+---
+
+<header class="sticky top-0 z-40 border-b border-white/10 bg-ink-950/72 backdrop-blur-xl">
+  <div class="shell flex flex-col gap-4 py-4 lg:flex-row lg:items-center lg:justify-between">
+    <div class="flex items-center justify-between gap-4">
+      <a href={getLocalizedPath(locale)} class="group inline-flex items-center gap-3">
+        <span class="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/15 bg-white/8 text-sm font-semibold text-aqua-400 transition group-hover:border-aqua-400/50">
+          KL
+        </span>
+        <div>
+          <div class="text-lg font-semibold tracking-tight text-sand-100">Knowlton Lab</div>
+          <div class="text-sm text-sand-100/58">{ui.home}</div>
+        </div>
+      </a>
+      <div class="lg:hidden">
+        <LanguageSwitcher locale={locale} slug={currentPage ?? ""} />
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3 lg:items-end">
+      <nav aria-label="Primary" class="flex flex-wrap justify-start gap-2 lg:justify-end">
+        {pageSlugs.map((page) => {
+          const isCurrent = currentPage === page;
+
+          return (
+            <a
+              href={getLocalizedPath(locale, page)}
+              class:list={[
+                "rounded-full border px-4 py-2 text-sm transition",
+                isCurrent
+                  ? "border-aqua-400/40 bg-aqua-400/14 text-sand-100"
+                  : "border-white/10 bg-white/5 text-sand-100/72 hover:border-white/18 hover:bg-white/10 hover:text-sand-100"
+              ]}
+              aria-current={isCurrent ? "page" : undefined}
+            >
+              {labels[page]}
+            </a>
+          );
+        })}
+      </nav>
+      <div class="hidden lg:block">
+        <LanguageSwitcher locale={locale} slug={currentPage ?? ""} />
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,18 @@
+---
+import { defaultLocale } from "../data/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getLocalizedPath } from "../lib/routing";
+---
+
+<BaseLayout locale={defaultLocale} page="home">
+  <section class="shell py-20">
+    <div class="panel px-6 py-10 sm:px-8">
+      <p class="eyebrow">404</p>
+      <h1 class="mt-4 text-5xl text-sand-100 sm:text-6xl">Page not found</h1>
+      <p class="muted-copy mt-5 max-w-2xl">
+        The route you requested does not exist in the Astro site. Use the homepage or the primary navigation to continue.
+      </p>
+      <a class="cta-primary mt-8" href={getLocalizedPath(defaultLocale)}>Return home</a>
+    </div>
+  </section>
+</BaseLayout>
