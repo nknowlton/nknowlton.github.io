@@ -4,16 +4,18 @@ title: Students
 permalink: /students/
 ---
 
-## Current students
+## Current PhD students
 
-- **[Placeholder: PhD student name]** — Project title and one-line summary.
-- **[Placeholder: MSc student name]** — Project title and one-line summary.
-- **[Placeholder: Honours student name]** — Project title and one-line summary.
+- **Hooman Misaghi** — PhD, University of Auckland / Wild Bloom (started 2023). Main supervisor, 50 %.
+- **Yuting Yang** — PhD Health Sciences, University of Auckland (started 2024). Co-supervisor, 10 %.
+- **Grace Donaldson** — PhD, University of Auckland (started 2025). Co-supervisor, 20 %.
+- **Rihanna Hosseini** — PhD Information Technology, Massey University (started 2026). Supervisor, 80 %.
+- **Rooshan Ghous** — PhD Information Technology, Massey University (started 2026). Supervisor, 80 %.
+- **Duhita Dey** — PhD Health Economics, University of Auckland (started 2026). Co-supervisor, 20 %.
+- **Yuqi Dan** — PhD, details to be confirmed.
 
-## Alumni
+## Current Masters students
 
-- **[Placeholder: Alumni name]** — Degree, years, and destination.
-- **[Placeholder: Alumni name]** — Degree, years, and key output (paper/thesis/software).
-
-## How to update
-Replace placeholders as people join or complete.
+- **[Braden Woodhouse](https://www.linkedin.com/in/braden-woodhouse/)** — MSc Data Science, University of Auckland (started 2023).
+- **[Nooriyah Poonawala](https://www.linkedin.com/in/nooriyahpoonawala/)** — MSc, University of Auckland.
+- **[Soo Yeon Kang](https://www.linkedin.com/in/suyeon-kang-b61100221/)** — MSc, University of Auckland.
