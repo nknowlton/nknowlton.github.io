@@ -28,16 +28,16 @@ export const siteMeta = {
   site: "https://knowlton.co.nz",
   email: "n.knowlton@auckland.ac.nz",
   description:
-    "Knowlton Lab at the University of Auckland and Massey University, focused on applied statistics, machine learning, and translational biomedical research.",
-  institutions: ["University of Auckland", "Massey University"],
+    "Knowlton Lab at Massey University and the University of Auckland, focused on applied statistics, machine learning, and translational biomedical research.",
+  institutions: ["Massey University", "University of Auckland"],
   socialLinks: [
-    {
-      label: "University of Auckland",
-      href: "https://profiles.auckland.ac.nz/n-knowlton"
-    },
     {
       label: "Massey University",
       href: "https://www.massey.ac.nz/massey/expertise/profile.cfm?stref=284822"
+    },
+    {
+      label: "University of Auckland",
+      href: "https://profiles.auckland.ac.nz/n-knowlton"
     },
     {
       label: "Google Scholar",
@@ -48,7 +48,7 @@ export const siteMeta = {
       href: "https://orcid.org/0000-0002-7022-3352"
     },
     {
-      label: "GitHub",
+      label: "GitHub - Personal",
       href: "https://github.com/nknowlton"
     },
     {
@@ -161,13 +161,13 @@ export const pageMeta: Record<
     en: {
       title: "Students",
       description:
-        "Current PhD and Masters students, supervision commitments, and mentoring priorities.",
+        "Current PhD students, lab alumni, supervision commitments, and mentoring priorities.",
       eyebrow: "Students and trainees"
     },
     mi: {
       title: "Akonga / Students",
       description:
-        "Current PhD and Masters students, supervision commitments, and mentoring priorities.",
+        "Current PhD students, lab alumni, supervision commitments, and mentoring priorities.",
       eyebrow: "Akonga / Students and trainees"
     }
   },
@@ -335,13 +335,41 @@ export const researchThemes = [
 
 export const studentGroups = {
   phd: [
-    "Hooman Misaghi - PhD, University of Auckland / Wild Bloom (started 2023). Main supervisor, 50%.",
-    "Yuting Yang - PhD Health Sciences, University of Auckland (started 2024). Co-supervisor, 10%.",
-    "Grace Donaldson - PhD, University of Auckland (started 2025). Co-supervisor, 20%.",
-    "Rihanna Hosseini - PhD Information Technology, Massey University (started 2026). Supervisor, 80%.",
-    "Rooshan Ghous - PhD Information Technology, Massey University (started 2026). Supervisor, 80%.",
-    "Duhita Dey - PhD Health Economics, University of Auckland (started 2026). Co-supervisor, 20%.",
-    "Yuqi Dan - PhD, details to be confirmed."
+    {
+      label: "Hooman Misaghi",
+      href: "https://www.linkedin.com/in/hooman-misaghi/",
+      detail: "Started 2023"
+    },
+    {
+      label: "Yuting Yang",
+      href: "https://www.linkedin.com/in/yang-yuting0501/",
+      detail: "Started 2024"
+    },
+    {
+      label: "Grace Donaldson",
+      href: "https://www.linkedin.com/in/grace-donaldson-674a4b346/",
+      detail: "Started 2025"
+    },
+    {
+      label: "Reihaneh Hosseini",
+      href: "https://www.linkedin.com/in/reihaneh-hosseini-122836237/",
+      detail: "Started 2026"
+    },
+    {
+      label: "Rooshan Ghous",
+      href: "https://www.linkedin.com/in/rooshan-ghous-9a4a5036/",
+      detail: "Started 2026"
+    },
+    {
+      label: "Duhita Dey",
+      href: "https://www.linkedin.com/in/duhita-dey-359a06120/",
+      detail: "Started 2026"
+    },
+    {
+      label: "Yuqi Duan",
+      href: "https://www.linkedin.com/in/yuqi-duan-320300382/",
+      detail: "Started 2025"
+    }
   ],
   masters: [
     {

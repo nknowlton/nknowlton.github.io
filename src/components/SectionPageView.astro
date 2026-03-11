@@ -98,18 +98,34 @@ const ui = uiText[locale];
         <h2 class="card-title mt-3">Current doctoral students</h2>
         <ul class="mt-5 space-y-4">
           {studentGroups.phd.map((student) => (
-            <li class="text-base leading-7 text-sand-100/76">{student}</li>
+            <li class="text-base leading-7 text-sand-100/76">
+              <a
+                class="font-semibold text-aqua-400 hover:text-aqua-400/80"
+                href={student.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {student.label}
+              </a>
+              {" - "}
+              {student.detail}
+            </li>
           ))}
         </ul>
       </article>
 
       <article class="panel px-6 py-7">
-        <p class="eyebrow">Masters</p>
-        <h2 class="card-title mt-3">Current Masters students</h2>
+        <p class="eyebrow">Alumni</p>
+        <h2 class="card-title mt-3">Lab Alumni</h2>
         <ul class="mt-5 space-y-4">
           {studentGroups.masters.map((student) => (
             <li class="text-base leading-7 text-sand-100/76">
-              <a class="font-semibold text-aqua-400 hover:text-aqua-400/80" href={student.href}>
+              <a
+                class="font-semibold text-aqua-400 hover:text-aqua-400/80"
+                href={student.href}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {student.label}
               </a>
               {" - "}

@@ -8,3 +8,5 @@ _site
 *.gem
 
 .npm-cache/
+
+.playwright-cli/
