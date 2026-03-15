@@ -5,6 +5,8 @@ on:
     branches:
       - main
   workflow_dispatch:
+  repository_dispatch:
+    types: [deploy-course-content]
 
 permissions:
   contents: read
@@ -19,19 +21,48 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout hub (Astro)
         uses: actions/checkout@v4
+
+      - name: Checkout 161324 course content
+        uses: actions/checkout@v4
+        with:
+          repository: nknowlton/161324
+          path: _courses/161324
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
+
       - name: Install dependencies
         run: npm install
+
       - name: Build with Astro
         run: npm run build
+
+      - name: Inject 161324 notes (bookdown → dist/161324/notes/)
+        run: |
+          if [ -d "_courses/161324/docs" ]; then
+            mkdir -p dist/161324/notes
+            cp -r _courses/161324/docs/. dist/161324/notes/
+          fi
+
+      - name: Inject 161324 lectures (lectures-html → dist/161324/lectures/)
+        run: |
+          if [ -d "_courses/161324/lectures-html" ]; then
+            mkdir -p dist/161324/lectures
+            shopt -s nullglob
+            files=(_courses/161324/lectures-html/*)
+            if [ ${#files[@]} -gt 0 ]; then
+              cp -r _courses/161324/lectures-html/. dist/161324/lectures/
+            fi
+          fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
