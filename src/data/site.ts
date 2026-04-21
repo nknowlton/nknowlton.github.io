@@ -210,7 +210,7 @@ export const homeContent: Record<
     secondaryCta: { label: string; href: PageSlug };
     tertiaryCta: { label: string; href: PageSlug };
     focusItems: string[];
-    pillars: { title: string; body: string; href: PageSlug }[];
+    pillars: { eyebrow: string; title: string; body: string; href: PageSlug }[];
     stats: { value: string; label: string }[];
   }
 > = {
@@ -229,16 +229,19 @@ export const homeContent: Record<
     ],
     pillars: [
       {
+        eyebrow: "Research",
         title: "Research programmes",
         body: "Method development connected to translational use cases, not benchmark theatre.",
         href: "research"
       },
       {
+        eyebrow: "Training",
         title: "Supervision",
         body: "PhD and Masters training across imaging, machine learning, and biomedical data science.",
         href: "students"
       },
       {
+        eyebrow: "Education",
         title: "Teaching",
         body: "Practical statistics and data science courses with direct links to hosted materials.",
         href: "teaching"
@@ -265,17 +268,20 @@ export const homeContent: Record<
     ],
     pillars: [
       {
-        title: "Rangahau / Research",
+        eyebrow: "Rangahau / Research",
+        title: "Research programmes",
         body: "Programme pages can be translated independently without changing the layout system.",
         href: "research"
       },
       {
-        title: "Akonga / Students",
+        eyebrow: "Akonga / Students",
+        title: "Supervision",
         body: "Supervision and trainee information stays structured and easy to extend across locales.",
         href: "students"
       },
       {
-        title: "Whakaputanga / Publications",
+        eyebrow: "Whakaputanga / Publications",
+        title: "Selected publications",
         body: "Selected outputs are now a first-class section rather than an off-site afterthought.",
         href: "publications"
       }
@@ -317,19 +323,22 @@ export const researchThemes = [
     title: "Breast cancer and imaging AI",
     body:
       "Interpretable models for mammography, risk prediction, dense-breast workflows, and imaging-led decision support.",
-    methods: ["Risk modelling", "Screening evaluation", "Clinical validation"]
+    methods: ["Risk modelling", "Screening evaluation", "Clinical validation"],
+    accent: "coral"
   },
   {
     title: "Reproductive biology and IVF analytics",
     body:
       "Computer vision, morphokinetic analysis, and statistical pipelines for embryo and sperm phenotyping.",
-    methods: ["Computer vision", "Time-series analysis", "Fertility decision support"]
+    methods: ["Computer vision", "Time-series analysis", "Fertility decision support"],
+    accent: "aqua"
   },
   {
     title: "Robust translational statistics",
     body:
       "Evaluation, uncertainty quantification, and modelling strategies designed for messy biomedical deployment environments.",
-    methods: ["Uncertainty modelling", "Validation", "Study design"]
+    methods: ["Uncertainty modelling", "Validation", "Study design"],
+    accent: "gold"
   }
 ] as const;
 

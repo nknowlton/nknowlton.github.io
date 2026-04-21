@@ -20,24 +20,32 @@ const ui = uiText[locale];
 ---
 
 <header class="sticky top-0 z-40 border-b border-white/10 bg-ink-950/72 backdrop-blur-xl">
-  <div class="shell flex flex-col gap-4 py-4 lg:flex-row lg:items-center lg:justify-between">
-    <div class="flex items-center justify-between gap-4">
-      <a href={getLocalizedPath(locale)} class="group inline-flex items-center gap-3">
-        <span class="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/15 bg-white/8 text-sm font-semibold text-aqua-400 transition group-hover:border-aqua-400/50">
-          KL
-        </span>
-        <div>
-          <div class="text-lg font-semibold tracking-tight text-sand-100">Knowlton Lab</div>
-          <div class="text-sm text-sand-100/58">{ui.home}</div>
-        </div>
-      </a>
-      <div class="lg:hidden">
-        <LanguageSwitcher locale={locale} slug={currentPage ?? ""} />
+  <div class="shell flex items-center justify-between py-4">
+    <a href={getLocalizedPath(locale)} class="group inline-flex items-center gap-3">
+      <span class="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/15 bg-white/8 text-sm font-semibold text-aqua-400 transition group-hover:border-aqua-400/50">
+        KL
+      </span>
+      <div>
+        <div class="text-lg font-semibold tracking-tight text-sand-100">Knowlton Lab</div>
+        <div class="text-sm text-sand-100/72">{ui.home}</div>
       </div>
+    </a>
+
+    <div class="flex items-center gap-3 lg:hidden">
+      <LanguageSwitcher locale={locale} slug={currentPage ?? ""} />
+      <button
+        id="mobile-menu-toggle"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-sand-100 transition hover:border-aqua-400/50 hover:bg-white/10"
+      >
+        <svg id="menu-icon-open" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="menu-icon-close" class="hidden h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
     </div>
 
-    <div class="flex flex-col gap-3 lg:items-end">
-      <nav aria-label="Primary" class="flex flex-wrap justify-start gap-2 lg:justify-end">
+    <div class="hidden items-center gap-3 lg:flex">
+      <nav aria-label="Primary" class="flex flex-wrap justify-end gap-2">
         {pageSlugs.map((page) => {
           const isCurrent = currentPage === page;
 
@@ -57,9 +65,47 @@ const ui = uiText[locale];
           );
         })}
       </nav>
-      <div class="hidden lg:block">
-        <LanguageSwitcher locale={locale} slug={currentPage ?? ""} />
-      </div>
+      <LanguageSwitcher locale={locale} slug={currentPage ?? ""} />
+    </div>
+  </div>
+
+  <div id="primary-nav" class="hidden lg:hidden">
+    <div class="shell flex flex-col gap-2 pb-4">
+      {pageSlugs.map((page) => {
+        const isCurrent = currentPage === page;
+
+        return (
+          <a
+            href={getLocalizedPath(locale, page)}
+            class:list={[
+              "rounded-xl border px-4 py-3 text-sm transition",
+              isCurrent
+                ? "border-aqua-400/40 bg-aqua-400/14 text-sand-100"
+                : "border-white/10 bg-white/5 text-sand-100/72 hover:border-white/18 hover:bg-white/10 hover:text-sand-100"
+            ]}
+            aria-current={isCurrent ? "page" : undefined}
+          >
+            {labels[page]}
+          </a>
+        );
+      })}
     </div>
   </div>
 </header>
+
+<script is:inline>
+  (function() {
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const nav = document.getElementById('primary-nav');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+    if (!toggle || !nav) return;
+    toggle.addEventListener('click', function() {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('hidden');
+      iconOpen?.classList.toggle('hidden');
+      iconClose?.classList.toggle('hidden');
+    });
+  })();
+</script>

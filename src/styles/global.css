@@ -11,7 +11,7 @@
   --color-aqua-400: #7cd4d0;
   --color-coral-400: #ff8a67;
   --color-gold-300: #f1cd76;
-  --shadow-float: 0 28px 70px rgba(4, 10, 22, 0.38);
+  --shadow-float: 0 28px 70px rgba(4, 10, 22, 0.44);
 }
 
 @layer base {
@@ -66,8 +66,13 @@
   }
 
   .panel {
-    @apply rounded-[1.75rem] border border-white/12 bg-white/6 backdrop-blur-xl;
+    @apply rounded-[1.35rem] border border-white/12 bg-white/6 backdrop-blur-xl transition sm:rounded-[1.75rem];
     box-shadow: var(--shadow-float);
+  }
+
+  .panel-strong {
+    @apply rounded-[1.35rem] border border-white/15 bg-white/8 backdrop-blur-xl transition sm:rounded-[1.75rem];
+    box-shadow: 0 32px 80px rgba(4, 10, 22, 0.48), inset 0 1px 0 rgba(255,255,255,0.06);
   }
 
   .muted-copy {

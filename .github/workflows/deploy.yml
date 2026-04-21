@@ -63,6 +63,28 @@ jobs:
             fi
           fi
 
+      - name: Inject 161324 parquet data (data/*.parquet -> dist/161324/data/)
+        run: |
+          if [ -d "_courses/161324/data" ]; then
+            mkdir -p dist/161324/data
+            shopt -s nullglob
+            files=(_courses/161324/data/*.parquet)
+            if [ ${#files[@]} -gt 0 ]; then
+              cp _courses/161324/data/*.parquet dist/161324/data/
+            fi
+          fi
+
+      - name: Inject 161324 labs (labs -> dist/161324/labs/)
+        run: |
+          if [ -d "_courses/161324/labs" ]; then
+            mkdir -p dist/161324/labs
+            shopt -s nullglob
+            files=(_courses/161324/labs/*)
+            if [ ${#files[@]} -gt 0 ]; then
+              cp -r _courses/161324/labs/. dist/161324/labs/
+            fi
+          fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

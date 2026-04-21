@@ -56,6 +56,8 @@ const ui = uiText[locale];
     <meta property="og:site_name" content={siteMeta.name} />
     <meta property="og:locale" content={locale === "en" ? "en_NZ" : "mi_NZ"} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:image" content={`${siteMeta.site}/og-image.svg`} />
+    <meta name="twitter:image" content={`${siteMeta.site}/og-image.svg`} />
   </head>
   <body>
     <SiteHeader locale={locale} currentPage={page === "home" ? undefined : page} />

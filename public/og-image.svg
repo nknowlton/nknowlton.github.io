@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#09111d"/>
+      <stop offset="100%" stop-color="#111d30"/>
+    </linearGradient>
+    <radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7cd4d0" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#7cd4d0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="1" cy="0" r="1" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ff8a67" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#ff8a67" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="200" cy="150" r="350" fill="url(#g1)"/>
+  <circle cx="1000" cy="120" r="300" fill="url(#g2)"/>
+  <rect x="80" y="80" width="1040" height="470" rx="48" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)" stroke-width="2"/>
+  <text x="120" y="220" font-family="Georgia, 'Palatino Linotype', serif" font-size="72" font-weight="600" fill="#f4eee7" letter-spacing="-0.02em">Knowlton Lab</text>
+  <text x="120" y="290" font-family="'Segoe UI', system-ui, sans-serif" font-size="32" fill="#7cd4d0" font-weight="500">Applied statistics &amp; machine learning</text>
+  <text x="120" y="350" font-family="'Segoe UI', system-ui, sans-serif" font-size="24" fill="#f4eee7" opacity="0.72">Translational biomedical research at Massey University</text>
+  <text x="120" y="385" font-family="'Segoe UI', system-ui, sans-serif" font-size="24" fill="#f4eee7" opacity="0.72">and the University of Auckland</text>
+  <text x="120" y="490" font-family="'Segoe UI', system-ui, sans-serif" font-size="18" fill="#f4eee7" opacity="0.45" letter-spacing="0.12em" font-weight="600" text-transform="uppercase">BREAST IMAGING  ·  REPRODUCTIVE BIOLOGY  ·  ROBUST STATISTICS</text>
+</svg>

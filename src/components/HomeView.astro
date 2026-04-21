@@ -23,10 +23,10 @@ const featuredPublications = publications.slice(0, 3);
 <section class="shell py-10 sm:py-14">
   <div class="grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
     <article class="panel relative overflow-hidden px-6 py-8 sm:px-8 sm:py-10">
-      <div class="absolute right-[-4rem] top-[-4rem] h-48 w-48 rounded-full bg-coral-400/18 blur-3xl"></div>
-      <div class="absolute bottom-[-5rem] left-[14rem] h-56 w-56 rounded-full bg-aqua-400/16 blur-3xl"></div>
+      <div class="absolute right-[-4rem] top-[-4rem] h-48 w-48 rounded-full bg-coral-400/28 blur-3xl"></div>
+      <div class="absolute bottom-[-5rem] left-[14rem] h-56 w-56 rounded-full bg-aqua-400/26 blur-3xl"></div>
       <p class="eyebrow">{meta.eyebrow}</p>
-      <h1 class="mt-4 max-w-4xl text-5xl leading-[0.95] text-sand-100 sm:text-6xl">
+      <h1 class="mt-4 max-w-4xl text-5xl leading-[1.05] text-sand-100 sm:text-6xl">
         {content.title}
       </h1>
       <p class="muted-copy mt-6 max-w-3xl text-lg">{content.lead}</p>
@@ -45,9 +45,9 @@ const featuredPublications = publications.slice(0, 3);
 
       <div class="mt-10 grid gap-3 sm:grid-cols-3">
         {content.stats.map((stat) => (
-          <div class="rounded-[1.4rem] border border-white/10 bg-ink-900/58 px-4 py-4">
+          <div class="rounded-[1.4rem] border border-white/10 bg-white/[0.04] px-4 py-4 shadow-sm transition hover:-translate-y-0.5 hover:bg-white/[0.07]">
             <div class="text-3xl font-semibold text-sand-100">{stat.value}</div>
-            <div class="mt-1 text-sm text-sand-100/60">{stat.label}</div>
+            <div class="mt-1 text-sm text-sand-100/72">{stat.label}</div>
           </div>
         ))}
       </div>
@@ -60,7 +60,7 @@ const featuredPublications = publications.slice(0, 3);
         {content.focusItems.map((item) => (
           <li class="flex gap-3">
             <span class="mt-2 h-2.5 w-2.5 rounded-full bg-gold-300"></span>
-            <span class="text-base leading-7 text-sand-100/76">{item}</span>
+            <span class="text-base leading-7 text-sand-100/80">{item}</span>
           </li>
         ))}
       </ul>
@@ -77,8 +77,8 @@ const featuredPublications = publications.slice(0, 3);
 <section class="shell pb-10">
   <div class="section-grid">
     {content.pillars.map((pillar) => (
-      <article class="panel px-6 py-6">
-        <p class="eyebrow">{pillar.title}</p>
+      <article class="panel px-6 py-6 transition hover:-translate-y-0.5 hover:border-aqua-400/25">
+        <p class="eyebrow">{pillar.eyebrow}</p>
         <h2 class="card-title mt-3">{pillar.title}</h2>
         <p class="muted-copy mt-3">{pillar.body}</p>
         <a
@@ -108,10 +108,10 @@ const featuredPublications = publications.slice(0, 3);
 
   <div class="section-grid">
     {featuredPublications.map((publication) => (
-      <article class="panel px-6 py-6">
+      <article class="panel px-6 py-6 transition hover:-translate-y-0.5 hover:border-aqua-400/25">
         <div class="flex items-center justify-between gap-4">
           <span class="chip">{publication.year}</span>
-          <span class="text-xs uppercase tracking-[0.18em] text-sand-100/45">{publication.venue}</span>
+          <span class="text-xs uppercase tracking-[0.18em] text-sand-100/72">{publication.venue}</span>
         </div>
         <h3 class="mt-5 text-2xl text-sand-100">{publication.title}</h3>
         <p class="muted-copy mt-4">{publication.summary}</p>
