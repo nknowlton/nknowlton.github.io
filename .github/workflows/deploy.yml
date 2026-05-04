@@ -62,6 +62,72 @@ jobs:
             echo "- lectures-html/index.html: MISSING (lectures landing page may 404)" >> "$GITHUB_STEP_SUMMARY"
           fi
 
+      - name: Stage 161324 content in public/
+        run: |
+          rm -rf public/161324/notes public/161324/lectures public/161324/data public/161324/labs
+
+          if [ -d "_courses/161324/docs" ]; then
+            mkdir -p public/161324/notes
+            cp -r _courses/161324/docs/. public/161324/notes/
+            echo "- notes staged in public/161324/notes" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- WARNING: notes not staged (_courses/161324/docs missing)" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          if [ -d "_courses/161324/lectures-html" ]; then
+            mkdir -p public/161324/lectures
+            shopt -s nullglob
+            lecture_files=(_courses/161324/lectures-html/*)
+            if [ ${#lecture_files[@]} -gt 0 ]; then
+              cp -r _courses/161324/lectures-html/. public/161324/lectures/
+              echo "- lectures staged in public/161324/lectures" >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "- WARNING: lectures not staged (_courses/161324/lectures-html empty)" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          else
+            echo "- WARNING: lectures not staged (_courses/161324/lectures-html missing)" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          if [ -d "_courses/161324/data" ]; then
+            mkdir -p public/161324/data
+            shopt -s nullglob
+            csv_files=(_courses/161324/data/*.csv)
+            gz_files=(_courses/161324/data/*.csv.gz)
+
+            if [ ${#csv_files[@]} -gt 0 ]; then
+              for f in "${csv_files[@]}"; do
+                out="public/161324/data/$(basename "$f").gz"
+                gzip -c "$f" > "$out"
+              done
+              echo "- csv.gz data staged in public/161324/data (${#csv_files[@]} generated)" >> "$GITHUB_STEP_SUMMARY"
+            fi
+
+            if [ ${#gz_files[@]} -gt 0 ]; then
+              cp _courses/161324/data/*.csv.gz public/161324/data/
+              echo "- existing csv.gz files staged in public/161324/data (${#gz_files[@]} copied)" >> "$GITHUB_STEP_SUMMARY"
+            fi
+
+            if [ ${#csv_files[@]} -eq 0 ] && [ ${#gz_files[@]} -eq 0 ]; then
+              echo "- WARNING: data not staged (no CSV or CSV.GZ files)" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          else
+            echo "- WARNING: data not staged (_courses/161324/data missing)" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          if [ -d "_courses/161324/labs" ]; then
+            mkdir -p public/161324/labs
+            shopt -s nullglob
+            lab_files=(_courses/161324/labs/*)
+            if [ ${#lab_files[@]} -gt 0 ]; then
+              cp -r _courses/161324/labs/. public/161324/labs/
+              echo "- labs staged in public/161324/labs" >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "- WARNING: labs not staged (_courses/161324/labs empty)" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          else
+            echo "- WARNING: labs not staged (_courses/161324/labs missing)" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -76,81 +142,6 @@ jobs:
 
       - name: Build with Astro
         run: npm run build
-
-      - name: Inject 161324 notes (bookdown → dist/161324/notes/)
-        run: |
-          if [ -d "_courses/161324/docs" ]; then
-            mkdir -p dist/161324/notes
-            cp -r _courses/161324/docs/. dist/161324/notes/
-            echo "- notes copied from _courses/161324/docs" >> "$GITHUB_STEP_SUMMARY"
-            if [ ! -f "dist/161324/notes/index.html" ]; then
-              echo "- WARNING: dist/161324/notes/index.html missing after copy" >> "$GITHUB_STEP_SUMMARY"
-            fi
-          else
-            echo "- WARNING: notes skipped (_courses/161324/docs missing)" >> "$GITHUB_STEP_SUMMARY"
-          fi
-
-      - name: Inject 161324 lectures (lectures-html → dist/161324/lectures/)
-        run: |
-          if [ -d "_courses/161324/lectures-html" ]; then
-            mkdir -p dist/161324/lectures
-            shopt -s nullglob
-            files=(_courses/161324/lectures-html/*)
-            if [ ${#files[@]} -gt 0 ]; then
-              cp -r _courses/161324/lectures-html/. dist/161324/lectures/
-              echo "- lectures copied from _courses/161324/lectures-html" >> "$GITHUB_STEP_SUMMARY"
-            else
-              echo "- WARNING: lectures skipped (_courses/161324/lectures-html empty)" >> "$GITHUB_STEP_SUMMARY"
-            fi
-          else
-            echo "- WARNING: lectures skipped (_courses/161324/lectures-html missing)" >> "$GITHUB_STEP_SUMMARY"
-          fi
-
-      - name: Inject 161324 gzipped CSV data (data/*.csv -> dist/161324/data/*.csv.gz)
-        run: |
-          if [ -d "_courses/161324/data" ]; then
-            mkdir -p dist/161324/data
-            shopt -s nullglob
-            csv_files=(_courses/161324/data/*.csv)
-            gz_files=(_courses/161324/data/*.csv.gz)
-
-            if [ ${#csv_files[@]} -gt 0 ]; then
-              for f in "${csv_files[@]}"; do
-                out="dist/161324/data/$(basename "$f").gz"
-                gzip -c "$f" > "$out"
-              done
-              echo "- csv.gz data generated from CSV (${#csv_files[@]} files)" >> "$GITHUB_STEP_SUMMARY"
-            else
-              echo "- csv.gz generation skipped (no *.csv files)" >> "$GITHUB_STEP_SUMMARY"
-            fi
-
-            if [ ${#gz_files[@]} -gt 0 ]; then
-              cp _courses/161324/data/*.csv.gz dist/161324/data/
-              echo "- existing csv.gz data copied (${#gz_files[@]} files)" >> "$GITHUB_STEP_SUMMARY"
-            fi
-
-            if [ ${#csv_files[@]} -eq 0 ] && [ ${#gz_files[@]} -eq 0 ]; then
-              echo "- WARNING: data step found no CSV or CSV.GZ files" >> "$GITHUB_STEP_SUMMARY"
-            fi
-          else
-            echo "- csv.gz data skipped (_courses/161324/data missing)" >> "$GITHUB_STEP_SUMMARY"
-          fi
-
-      - name: Inject 161324 labs (labs -> dist/161324/labs/)
-        run: |
-          if [ -d "_courses/161324/labs" ]; then
-            mkdir -p dist/161324/labs
-            shopt -s nullglob
-            files=(_courses/161324/labs/*)
-            if [ ${#files[@]} -gt 0 ]; then
-              cp -r _courses/161324/labs/. dist/161324/labs/
-              echo "- labs copied from _courses/161324/labs" >> "$GITHUB_STEP_SUMMARY"
-            else
-              echo "- WARNING: labs skipped (_courses/161324/labs empty)" >> "$GITHUB_STEP_SUMMARY"
-            fi
-          else
-            echo "- WARNING: labs skipped (_courses/161324/labs missing)" >> "$GITHUB_STEP_SUMMARY"
-          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
