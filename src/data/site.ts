@@ -423,6 +423,7 @@ export const teachingContent = {
   ],
   resources: [
     { label: "161.251 resources", href: "/161251/" },
+    { label: "161.324 resources", href: "/161324/" },
     { label: "161.762 resources", href: "/161762/" },
     { label: "161.762 lecture 1 example", href: "/161762/slides/lecture1.html" }
   ],
