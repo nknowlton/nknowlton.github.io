@@ -15,7 +15,7 @@ export const isPageSlug = (value: string): value is PageSlug => pageSlugs.includ
 export const siteMeta = {
   name: "Knowlton Lab",
   site: "https://knowlton.co.nz",
-  email: "n.knowlton@auckland.ac.nz",
+  emails: ["nknowlton@massey.ac.nz", "n.knowlton@auckland.ac.nz"],
   description: "Translational statistical science with a clear line of sight to clinical impact.",
   institutions: ["Massey University", "University of Auckland"],
   wyldBloom: "https://wyldbloom.ai",
@@ -42,9 +42,9 @@ const meta = {
   home: ["Knowlton Lab", "Statistical methods with a line of sight to clinical impact."],
   about: ["About", "The approach, affiliations, and values behind the Knowlton Lab."],
   research: ["Research", "Clinical questions, statistical methods, and where the work landed."],
-  students: ["People", "One integrated methods and manuscript-development cohort across two institutions."],
+  students: ["People", "Students working across biomedical research, statistical methods, applied AI, and translational science at Massey and Auckland."],
   teaching: ["Teaching", "Practical statistical reasoning for the data students actually encounter."],
-  publications: ["Publications", "Selected work tagged by its translational outcome."],
+  publications: ["Publications", "Recent scholarly outputs."],
   join: ["Join the lab", "Work on statistical methods that can survive contact with real data."]
 } as const;
 

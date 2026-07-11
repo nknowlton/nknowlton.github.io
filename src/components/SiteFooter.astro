@@ -9,7 +9,7 @@ const { locale } = Astro.props;
     <div>
       <h2>Methods that survive reality.</h2>
       <p>{siteMeta.institutions.join(" · ")}</p>
-      <a class="footer-email" href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a>
+      {siteMeta.emails.map((email) => <a class="footer-email" href={`mailto:${email}`}>{email}</a>)}
     </div>
     <div><h3>Explore</h3>{pageSlugs.map((page) => <a href={getLocalizedPath(locale, page)}>{navigationLabels[page]}</a>)}</div>
     <div><h3>Profiles</h3>{siteMeta.socialLinks.map((link) => <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>)}</div>

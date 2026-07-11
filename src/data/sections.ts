@@ -1,7 +1,8 @@
 export const outcomeClass: Record<string, string> = {
   patent: "tag-patent", policy: "tag-policy", product: "tag-product",
   guideline: "tag-guideline", teaching: "tag-teaching", cohort: "tag-teaching",
-  "open-source": "tag-teaching"
+  "open-source": "tag-teaching", epidemiology: "tag-guideline",
+  ml: "tag-policy", research: "tag-teaching"
 };
 
 export const researchStreams = [
@@ -46,7 +47,7 @@ export const aboutContent = {
     { title: "Interpretability by design", body: "Build methods that collaborators, clinicians, and domain experts can inspect and explain." },
     { title: "One connected practice", body: "Treat research, teaching, supervision, and citizenship as mutually reinforcing work." }
   ],
-  affiliations: ["University of Auckland", "Massey University", "One cross-institutional student and manuscript-development environment"]
+  affiliations: ["University of Auckland", "Massey University"]
 } as const;
 
 export const peopleContent = {
@@ -82,6 +83,7 @@ export const teachingContent = {
 export const joinContent = {
   lead: "I take students who want to build things that leave the building.",
   body: "PhD and MSc students across Massey and Auckland work as one methods and manuscript-development environment, with shared meetings, datasets, and translational targets.",
+  availability: "I am not accepting new students at present. The next intake will be in 2028.",
   values: ["Rigorous quantitative practice", "Clear communication with domain collaborators", "Reproducible work that survives real data", "Generous, cross-institutional collaboration"],
   send: ["Curriculum vitae", "A short research statement", "Academic transcript"]
 } as const;
