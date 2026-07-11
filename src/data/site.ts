@@ -62,7 +62,11 @@ export const homeContent = {
   titleAfter: "to clinical impact.",
   tagline: "Methods that survive messy data. Proven in the clinic.",
   lead: "Breast cancer risk modelling, endocrine therapy adherence, embryo selection AI, and reproducible research methods — from statistical problem to clinical decision.",
-  byline: ["Statistics · Machine learning", "2 US patents · 1M+ patients", "NHMRC MRFF & HRC grant reviewer"],
+  byline: [
+    "Senior Lecturer, Statistics · Massey University",
+    "Translational science · Machine learning",
+    "Models used to monitor 1M+ patients"
+  ],
   stats: [
     { value: "2", label: "US patents granted" },
     { value: "1M+", label: "patients monitored with VectraDA" },
@@ -79,8 +83,8 @@ export const homeContent = {
   selectedPeople: [
     { name: "Hooman Misaghi", role: "PhD · Auckland", question: "Artificial Intelligence Enabled IVF" },
     { name: "Reihaneh Hosseini", role: "PhD · Massey", question: "AI-driven breast cancer screening equity for Aotearoa" },
-    { name: "Dr Alex Trevarton", role: "Ngā Puanga Pūtaiao Fellow", question: "AI, breast density, and Wāhine Māori health equity" },
-    { name: "Dr Hossein Jahedi", role: "Cancer Society Postdoc", question: "Immune-mediated chemoresistance in triple-negative breast cancer" }
+    { name: "Yuqi Duan", role: "PhD · Auckland", question: "Epidemiology of early-onset cancers with a focus on breast cancer" },
+    { name: "Yuting Yang", role: "PhD · Auckland", question: "Histological and molecular subtypes of breast cancer in NZ women" }
   ],
   featuredPublications: publications.slice(0, 4)
 } as const;

@@ -61,12 +61,9 @@ export const peopleContent = {
     { title: "Reproductive AI & methods", people: [
       ["Hooman Misaghi", "PhD · Auckland", "Artificial Intelligence Enabled IVF"],
       ["Grace Donaldson", "PhD · Auckland", "Improving sperm assessment using AI"],
-      ["Zeyu Liu", "MSc · Massey", "Applied statistical modelling and thesis development"],
-      ["Dr Alex Trevarton", "Ngā Puanga Pūtaiao Fellow", "AI, breast density, and Wāhine Māori health equity"],
-      ["Dr Hossein Jahedi", "Cancer Society Postdoc", "Immune-mediated chemoresistance in triple-negative breast cancer"]
+      ["Zeyu Liu", "MSc · Massey", "Applied statistical modelling and thesis development"]
     ]}
   ],
-  mentoringNote: "Nick is Dr Alex Trevarton's named primary mentor; the fellowship is Trevarton's achievement. Nick is statistical mentor to Dr Hossein Jahedi.",
   alumni: ["Nooriyah Poonawala · MSc, Auckland", "Soo Yeon Kang · MSc, Auckland", "Braden Woodhouse · MSc Data Science, Auckland"]
 } as const;
 
