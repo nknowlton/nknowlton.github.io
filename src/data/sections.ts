@@ -53,19 +53,23 @@ export const aboutContent = {
 export const peopleContent = {
   groups: [
     { title: "Breast cancer & epidemiology", people: [
-      ["Yuqi Duan", "PhD · Auckland", "Epidemiology of early-onset cancers with a focus on breast cancer"],
-      ["Yuting Yang", "PhD · Auckland", "Histological and molecular subtypes of breast cancer in NZ women"],
-      ["Rooshan Ghous", "PhD · Massey", "Equity by Design: a code-to-bedside pathway for breast cancer care in NZ"],
-      ["Reihaneh Hosseini", "PhD · Massey", "AI-driven breast cancer screening equity for Aotearoa"],
-      ["Duhita Dey", "PhD · Auckland", "Breast cancer incidence, screening, workforce, and economics"]
+      ["Yuqi Duan", "PhD · Auckland", "Epidemiology of early-onset cancers with a focus on breast cancer", "https://www.linkedin.com/in/yuqi-duan-320300382/"],
+      ["Yuting Yang", "PhD · Auckland", "Histological and molecular subtypes of breast cancer in NZ women", "https://www.linkedin.com/in/yang-yuting0501/"],
+      ["Rooshan Ghous", "PhD · Massey", "Equity by Design: a code-to-bedside pathway for breast cancer care in NZ", "https://www.linkedin.com/in/rooshan-ghous-9a4a5036/"],
+      ["Reihaneh Hosseini", "PhD · Massey", "AI-driven breast cancer screening equity for Aotearoa", "https://www.linkedin.com/in/reihaneh-hosseini-122836237/"],
+      ["Duhita Dey", "PhD · Auckland", "Breast cancer incidence, screening, workforce, and economics", "https://www.linkedin.com/in/duhita-dey-359a06120/"]
     ]},
     { title: "Reproductive AI & methods", people: [
-      ["Hooman Misaghi", "PhD · Auckland", "Artificial Intelligence Enabled IVF"],
-      ["Grace Donaldson", "PhD · Auckland", "Improving sperm assessment using AI"],
+      ["Hooman Misaghi", "PhD · Auckland", "Artificial Intelligence Enabled IVF", "https://www.linkedin.com/in/hooman-misaghi/"],
+      ["Grace Donaldson", "PhD · Auckland", "Improving sperm assessment using AI", "https://www.linkedin.com/in/grace-donaldson-674a4b346/"],
       ["Zeyu Liu", "MSc · Massey", "Applied statistical modelling and thesis development"]
     ]}
   ],
-  alumni: ["Nooriyah Poonawala · MSc, Auckland", "Soo Yeon Kang · MSc, Auckland", "Braden Woodhouse · MSc Data Science, Auckland"]
+  alumni: [
+    ["Nooriyah Poonawala · MSc, Auckland", "https://www.linkedin.com/in/nooriyahpoonawala/"],
+    ["Soo Yeon Kang · MSc, Auckland", "https://www.linkedin.com/in/suyeon-kang-b61100221/"],
+    ["Braden Woodhouse · MSc Data Science, Auckland", "https://www.linkedin.com/in/braden-woodhouse/"]
+  ]
 } as const;
 
 export const teachingContent = {

@@ -12,7 +12,7 @@ const meta = pageMeta[page][locale];
 
 {page === "research" && <div class="page-body shell-wide"><div class="case-list">{researchStreams.map((stream, i) => <article class="research-case" id={stream.area === "Reproductive AI" ? "reproductive-ai" : undefined}><header><span>0{i + 1} · {stream.area}</span><h2>{stream.question}</h2><div class="tag-list">{stream.outcomes.map((tag) => <span class:list={["outcome-tag", outcomeClass[tag] ?? "tag-teaching"]}>{tag}</span>)}</div></header><div class="case-arc"><div><b>Clinical problem</b><p>{stream.problem}</p></div><div><b>Statistical method</b><p>{stream.method}</p></div><div><b>Where it landed</b><p>{stream.landed}</p></div></div>{stream.area === "Reproductive AI" && <a class="wyld-button" href={siteMeta.wyldBloom} target="_blank" rel="noreferrer">Explore WyldBloom ↗</a>}</article>)}</div></div>}
 
-{page === "students" && <div class="page-body shell-wide"><section class="prose-lead"><h2>A shared research environment.</h2><p>We meet regularly to discuss research questions, methods, datasets, results, and the practical work of turning analysis into clear, defensible manuscripts.</p></section><div class="people-columns">{peopleContent.groups.map((group) => <section><h2>{group.title}</h2>{group.people.map(([name, role, question]) => <article class="directory-row"><div><b>{name}</b><span>{role}</span></div><p>“{question}”</p></article>)}</section>)}</div><section class="split-section"><div><p class="mono-label">Completed MSc</p><h2>Alumni</h2></div><ul>{peopleContent.alumni.map((person) => <li>{person}</li>)}</ul></section></div>}
+{page === "students" && <div class="page-body shell-wide"><section class="prose-lead"><h2>A shared research environment.</h2><p>We meet regularly to discuss research questions, methods, datasets, results, and the practical work of turning analysis into clear, defensible manuscripts.</p></section><div class="people-columns">{peopleContent.groups.map((group) => <section><h2>{group.title}</h2>{group.people.map(([name, role, question, href]) => <article class="directory-row"><div>{href ? <a class="student-link" href={href} target="_blank" rel="noreferrer">{name}</a> : <b>{name}</b>}<span>{role}</span></div><p>“{question}”</p></article>)}</section>)}</div><section class="split-section"><div><p class="mono-label">Completed MSc</p><h2>Alumni</h2></div><ul>{peopleContent.alumni.map(([name, href]) => <li><a class="student-link" href={href} target="_blank" rel="noreferrer">{name}</a></li>)}</ul></section></div>}
 
 {page === "teaching" && <div class="page-body shell-wide"><section class="teaching-lead"><p class="mono-label">Teaching philosophy</p><h2>{teachingContent.philosophy}</h2><p>{teachingContent.body}</p></section><div class="course-layout"><aside><span>Course index</span>{teachingContent.courses.map((course, i) => <a href={`#course-${i + 1}`}>{course.code}</a>)}</aside><div>{teachingContent.courses.map((course, i) => <article class="course-row" id={`course-${i + 1}`}><span>{course.code}</span><div><h2>{course.title}</h2><div class="course-actions"><a href={course.href} target="_blank" rel="noreferrer">Course information ↗</a>{course.resources && <a href={course.resources}>Hosted materials →</a>}</div></div></article>)}</div></div></div>}
 
@@ -36,4 +36,14 @@ const meta = pageMeta[page][locale];
 
   .join-contact-buttons .primary-button:nth-child(1) { background: #9b4b58; }
   .join-contact-buttons .primary-button:nth-child(2) { background: #744d72; }
+
+  .student-link {
+    color: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 3px;
+  }
+
+  .student-link:hover { color: var(--accent); }
 </style>
