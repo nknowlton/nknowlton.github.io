@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowlton Lab — Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../theme.css">
+<style>
+/* palette + fonts + tag styles now live in ../theme.css */
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--font-body); background:var(--bg); color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+
+/* Masthead */
+.masthead { border-bottom:1px solid var(--rule); background:rgba(35,40,48,0.92); backdrop-filter:blur(14px); position:sticky; top:0; z-index:100; }
+.masthead-inner { max-width:1200px; margin:0 auto; padding:0 32px; height:58px; display:flex; align-items:center; justify-content:space-between; }
+.brand { display:flex; align-items:baseline; gap:12px; text-decoration:none; }
+.brand-name { font-family:var(--font-display); font-size:24px; color:var(--text); letter-spacing:-0.01em; }
+.brand-issue { font-family:var(--font-mono); font-size:10px; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; }
+.masthead-nav { display:flex; gap:26px; align-items:center; }
+.masthead-nav a { color:var(--text-2); text-decoration:none; font-size:12px; font-weight:500; letter-spacing:0.02em; transition:color var(--transition); }
+.masthead-nav a:hover { color:var(--text); }
+.wb-link { display:flex; align-items:center; gap:6px; padding:6px 13px; border-radius:5px; background:rgba(0,181,226,0.08); border:1px solid rgba(0,181,226,0.25); color:var(--cyan); text-decoration:none; font-size:11px; font-weight:600; transition:all var(--transition); }
+.wb-link:hover { background:rgba(0,181,226,0.15); border-color:var(--cyan); }
+.wb-link svg { width:12px; height:12px; }
+
+/* Hero band */
+.hero { max-width:1200px; margin:0 auto; padding:56px 32px 20px; border-bottom:1px solid var(--rule); }
+.kicker { font-family:var(--font-mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:22px; display:flex; align-items:center; gap:12px; }
+.kicker::before { content:''; width:28px; height:1px; background:var(--accent); }
+.hero h1 { font-family:var(--font-display); font-weight:400; font-size:64px; line-height:0.98; letter-spacing:-0.02em; max-width:900px; margin-bottom:20px; }
+.hero h1 em { font-style:italic; color:var(--accent); }
+.hero-lead { display:grid; grid-template-columns:1fr 320px; gap:40px; align-items:end; margin-bottom:8px; }
+.hero-tagline { font-family:var(--font-display); font-style:italic; font-size:23px; color:var(--warm); margin-bottom:14px; }
+.hero p { color:var(--text-2); font-size:15px; max-width:560px; }
+.hero-byline { font-family:var(--font-mono); font-size:11px; color:var(--text-3); text-align:right; line-height:1.9; }
+.hero-byline strong { color:var(--text-2); font-weight:500; }
+
+/* Body layout: sticky index rail + content */
+.layout { max-width:1200px; margin:0 auto; padding:0 32px; display:grid; grid-template-columns:200px 1fr; gap:56px; }
+.index-rail { position:sticky; top:88px; align-self:start; padding-top:40px; }
+.index-rail .rail-title { font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-3); margin-bottom:16px; }
+.index-rail ol { list-style:none; counter-reset:idx; }
+.index-rail li { counter-increment:idx; margin-bottom:2px; }
+.index-rail a { display:flex; gap:10px; padding:7px 0; color:var(--text-2); text-decoration:none; font-size:13px; transition:color var(--transition); border-top:1px solid var(--border); }
+.index-rail a::before { content:counter(idx,decimal-leading-zero); font-family:var(--font-mono); font-size:10px; color:var(--accent); padding-top:2px; }
+.index-rail a:hover { color:var(--text); }
+.rail-stats { margin-top:28px; border-top:1px solid var(--rule); padding-top:18px; }
+.rail-stat { margin-bottom:14px; }
+.rail-stat .n { font-family:var(--font-display); font-size:28px; color:var(--accent); line-height:1; }
+.rail-stat .l { font-size:10px; color:var(--text-3); line-height:1.35; margin-top:3px; }
+
+.content { padding-top:40px; }
+section.block { padding:8px 0 44px; border-bottom:1px solid var(--rule); }
+section.block:last-child { border-bottom:none; }
+.block-head { display:flex; align-items:baseline; gap:16px; margin-bottom:24px; }
+.block-num { font-family:var(--font-mono); font-size:12px; color:var(--accent); padding-top:6px; }
+.block-head h2 { font-family:var(--font-display); font-weight:400; font-size:34px; letter-spacing:-0.015em; }
+.block-head h2 em { font-style:italic; color:var(--warm); }
+.block-sub { font-size:13px; color:var(--text-3); margin-left:auto; font-family:var(--font-mono); align-self:center; }
+
+/* Masthead image band */
+.imgband { position:relative; height:200px; border-radius:10px; overflow:hidden; border:1px solid var(--border); margin-bottom:36px; background:linear-gradient(120deg,#0d1b2a,#15263a,#0f2f4a); }
+.imgband::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 30% 50%, rgba(230,57,70,0.14), transparent 55%), radial-gradient(circle at 78% 40%, rgba(0,181,226,0.12), transparent 50%); }
+.imgband .cap { position:absolute; bottom:12px; left:16px; font-family:var(--font-mono); font-size:10px; color:rgba(240,237,232,0.7); letter-spacing:0.04em; z-index:2; }
+.imgband .cap2 { position:absolute; top:12px; right:16px; font-family:var(--font-mono); font-size:10px; color:rgba(240,237,232,0.5); z-index:2; }
+
+/* Streams as ruled entries */
+.stream { display:grid; grid-template-columns:150px 1fr 180px; gap:28px; padding:22px 0; border-top:1px solid var(--border); transition:background var(--transition); }
+.stream:hover { background:var(--accent-subtle); }
+.stream-tag { font-family:var(--font-mono); font-size:11px; color:var(--accent); letter-spacing:0.04em; padding-top:4px; }
+.stream-q { font-family:var(--font-display); font-size:22px; line-height:1.15; margin-bottom:8px; }
+.stream-d { font-size:13px; color:var(--text-2); }
+.stream-arc { display:flex; flex-wrap:wrap; gap:6px; align-content:flex-start; padding-top:4px; }
+/* .arc-* tag styles now live in ../theme.css */
+
+/* People as columnar directory */
+.people-cols { display:grid; grid-template-columns:1fr 1fr; gap:36px; }
+.pcol h3 { font-family:var(--font-display); font-size:22px; margin-bottom:6px; }
+.pcol .csub { font-family:var(--font-mono); font-size:10px; color:var(--text-3); margin-bottom:16px; letter-spacing:0.04em; }
+.person { padding:13px 0; border-top:1px solid var(--border); }
+.person:first-of-type { border-top:1px solid var(--rule); }
+.person .top { display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+.person .name { font-size:14px; font-weight:600; }
+.person .role { font-family:var(--font-mono); font-size:9px; color:var(--accent); text-align:right; white-space:nowrap; }
+.person .q { font-size:12px; color:var(--text-2); font-style:italic; margin-top:3px; line-height:1.4; }
+.person .st { font-size:10px; color:var(--text-3); margin-top:3px; }
+.mentoring-note { font-family:var(--font-mono); font-size:10px; color:var(--text-3); margin-top:14px; padding-top:12px; border-top:1px solid var(--border); }
+
+/* Publications table */
+.pubtable { width:100%; border-collapse:collapse; }
+.pubtable thead th { font-family:var(--font-mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-3); text-align:left; padding:0 0 12px; border-bottom:1px solid var(--rule); font-weight:500; }
+.pubtable td { padding:16px 0; border-bottom:1px solid var(--border); vertical-align:top; }
+.pubtable tr { transition:background var(--transition); cursor:pointer; }
+.pubtable tbody tr:hover { background:var(--accent-subtle); }
+.pub-title { font-size:14px; font-weight:600; line-height:1.4; }
+.pub-meta { font-family:var(--font-mono); font-size:10px; color:var(--text-3); white-space:nowrap; }
+.pub-tags { display:flex; gap:5px; flex-wrap:wrap; }
+.col-year { width:70px; }
+.col-tags { width:190px; }
+
+/* Join */
+.join { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; }
+.join-lead { font-family:var(--font-display); font-size:26px; line-height:1.25; }
+.join-lead em { font-style:italic; color:var(--warm); }
+.join ul { list-style:none; }
+.join li { padding:11px 0; border-top:1px solid var(--border); font-size:13px; color:var(--text-2); display:flex; gap:10px; }
+.join li::before { content:'→'; color:var(--accent); }
+.join .send { margin-top:18px; }
+.join-btn { display:inline-flex; align-items:center; gap:8px; margin-top:16px; padding:11px 22px; border-radius:6px; background:var(--accent); color:var(--bg); text-decoration:none; font-size:13px; font-weight:600; transition:all var(--transition); }
+.join-btn:hover { background:var(--accent-hi); transform:translateY(-1px); box-shadow:0 4px 16px var(--accent-glow); }
+
+/* Footer */
+.footer { background:var(--bg-2); border-top:1px solid var(--rule); margin-top:8px; padding:44px 0 26px; }
+.footer-inner { max-width:1200px; margin:0 auto; padding:0 32px; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:36px; }
+.footer h4 { font-family:var(--font-display); font-weight:400; font-size:18px; margin-bottom:14px; }
+.footer ul { list-style:none; }
+.footer li { margin-bottom:6px; }
+.footer a { color:var(--text-2); text-decoration:none; font-size:12px; transition:color var(--transition); }
+.footer a:hover { color:var(--accent); }
+.footer-bottom { max-width:1200px; margin:28px auto 0; padding:20px 32px 0; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; font-size:11px; color:var(--text-3); }
+.footer-bottom .wb-footer { display:flex; align-items:center; gap:7px; color:var(--cyan); text-decoration:none; }
+
+@media (max-width:900px) {
+  .layout { grid-template-columns:1fr; gap:0; }
+  .index-rail { display:none; }
+  .hero h1 { font-size:44px; } .hero-lead { grid-template-columns:1fr; } .hero-byline { text-align:left; }
+  .stream { grid-template-columns:1fr; gap:10px; } .people-cols { grid-template-columns:1fr; }
+  .join { grid-template-columns:1fr; } .footer-inner { grid-template-columns:1fr; }
+  .masthead-nav a:not(.wb-wrap) { display:none; } .col-tags { display:none; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a href="#" class="brand">
+      <span class="brand-name">Knowlton Lab</span>
+      <span class="brand-issue">Translational Statistical Science</span>
+    </a>
+    <nav class="masthead-nav">
+      <a href="#research">Research</a>
+      <a href="#people">People</a>
+      <a href="#publications">Publications</a>
+      <a href="#join">Join</a>
+      <a href="https://wyldbloom.ai" class="wb-link" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        WyldBloom
+      </a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="kicker">Massey University &amp; University of Auckland — one integrated cohort</div>
+  <h1>Statistical methods with a <em>line of sight</em> to clinical impact.</h1>
+  <div class="hero-lead">
+    <div>
+      <div class="hero-tagline">Methods that survive messy data. Proven in the clinic.</div>
+      <p>Breast cancer risk modelling, endocrine therapy adherence, embryo selection AI, and reproducible research methods — from statistical problem to clinical decision.</p>
+    </div>
+    <div class="hero-byline">
+      <strong>Assoc. Prof (candidate) Nick Knowlton</strong><br>
+      Statistics · Machine learning<br>
+      2 US patents · 1M+ patients<br>
+      NHMRC MRFF &amp; HRC grant reviewer
+    </div>
+  </div>
+</section>
+
+<div class="layout">
+  <aside class="index-rail">
+    <div class="rail-title">In this issue</div>
+    <ol>
+      <li><a href="#research">Research streams</a></li>
+      <li><a href="#people">People</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#join">Join the lab</a></li>
+    </ol>
+    <div class="rail-stats">
+      <div class="rail-stat"><div class="n">2</div><div class="l">US patents granted (VectraDA, OncoVue)</div></div>
+      <div class="rail-stat"><div class="n">1M+</div><div class="l">patients monitored with VectraDA</div></div>
+      <div class="rail-stat"><div class="n">~50%</div><div class="l">of NZ breast cancer KPIs shaped by 30,000 Voices</div></div>
+      <div class="rail-stat"><div class="n">2</div><div class="l">institutions, one cohort</div></div>
+    </div>
+  </aside>
+
+  <main class="content">
+    <!-- Masthead image band -->
+    <div class="imgband">
+      <span class="cap2">// fig. 0 — morphokinetic imaging</span>
+      <span class="cap">Embryo morphokinetic stage detection · WyldBloom clinic imaging</span>
+    </div>
+
+    <!-- 01 Research -->
+    <section class="block" id="research">
+      <div class="block-head">
+        <span class="block-num">01</span>
+        <h2>What the lab is <em>working on</em></h2>
+        <span class="block-sub">active streams</span>
+      </div>
+      <div class="stream">
+        <div class="stream-tag">BREAST CANCER</div>
+        <div><div class="stream-q">Can a risk model survive messy screening data?</div><div class="stream-d">Multi-modality imaging evaluation in private screening. Nationwide HER2-Low retrospective cohort in Aotearoa NZ. Breast density AI and Wāhine Māori health equity.</div></div>
+        <div class="stream-arc"><span class="arc-tag arc-policy">policy</span><span class="arc-tag arc-product">product</span><span class="arc-tag arc-guideline">guideline</span></div>
+      </div>
+      <div class="stream">
+        <div class="stream-tag">REPRODUCTIVE AI</div>
+        <div><div class="stream-q">Can machine learning rank embryos better than an embryologist?</div><div class="stream-d">Morphokinetic stage detection, embryo annotation and segmentation, cohort-relative ranking. The research behind WyldBloom's clinic decision-support tools.</div></div>
+        <div class="stream-arc"><span class="arc-tag arc-patent">patent-pending</span><span class="arc-tag arc-product">product</span></div>
+      </div>
+      <div class="stream">
+        <div class="stream-tag">ADHERENCE</div>
+        <div><div class="stream-q">Can we detect adherence failure before it becomes recurrence?</div><div class="stream-d">Statistical systems for tracking and improving endocrine therapy adherence in breast cancer patients. BCFNZ registry-linked analysis with clinical collaborators.</div></div>
+        <div class="stream-arc"><span class="arc-tag arc-policy">policy</span><span class="arc-tag arc-teaching">cohort</span></div>
+      </div>
+      <div class="stream">
+        <div class="stream-tag">REPRODUCIBILITY</div>
+        <div><div class="stream-q">Can a method be trusted if no one can reproduce it?</div><div class="stream-d">Open-source tools and workflows that make translational research auditable — from raw data to published conclusion. Interactive teaching tools for PCA, collinearity and regression.</div></div>
+        <div class="stream-arc"><span class="arc-tag arc-teaching">teaching</span><span class="arc-tag arc-teaching">open-source</span></div>
+      </div>
+    </section>
+
+    <!-- 02 People -->
+    <section class="block" id="people">
+      <div class="block-head">
+        <span class="block-num">02</span>
+        <h2>One cohort, <em>two institutions</em></h2>
+        <span class="block-sub">directory</span>
+      </div>
+      <div class="people-cols">
+        <div class="pcol">
+          <h3>Breast Cancer &amp; Epidemiology</h3>
+          <div class="csub">// Massey + Auckland</div>
+          <div class="person"><div class="top"><span class="name">Yuqi Duan</span><span class="role">PhD · Auckland</span></div><div class="q">"Epidemiology of early-onset cancers with a focus on breast cancer"</div><div class="st">CSC scholarship · Active</div></div>
+          <div class="person"><div class="top"><span class="name">Yuting Yang</span><span class="role">PhD · Auckland</span></div><div class="q">"Histological and molecular subtypes of breast cancer in NZ women"</div><div class="st">Active · BCFNR data analysis</div></div>
+          <div class="person"><div class="top"><span class="name">Rooshan Ghous</span><span class="role">PhD · Massey</span></div><div class="q">"Equity by Design: Code-to-Bedside pathway for breast cancer care in NZ"</div><div class="st">Active · Co-supervisor: Prof Barry Borman</div></div>
+          <div class="person"><div class="top"><span class="name">Reihaneh Hosseini</span><span class="role">PhD · Massey</span></div><div class="q">"Advancing health equity in breast cancer screening: an AI-driven approach for Aotearoa"</div><div class="st">Active · PhD fellowship</div></div>
+          <div class="person"><div class="top"><span class="name">Miaochun Cai</span><span class="role">PhD · Auckland</span></div><div class="q">"Time-to-event models to predict recurrence of DCIS in NZ women"</div><div class="st">Active</div></div>
+          <div class="person"><div class="top"><span class="name">Duhita Dey</span><span class="role">PhD · Auckland</span></div><div class="q">"Enhancing breast cancer care in NZ: incidence forecast, screening, workforce, economics"</div><div class="st">Active · WyldBloom intern</div></div>
+          <div class="person"><div class="top"><span class="name">Meike Witschel</span><span class="role">Prospective · Auckland</span></div><div class="q">"Early-onset breast cancer: spatial tumour ecosystems and microbial signatures"</div><div class="st">Prospective · with Cristin Print</div></div>
+        </div>
+        <div class="pcol">
+          <h3>Reproductive AI &amp; Computer Vision</h3>
+          <div class="csub">// embryo &amp; sperm imaging</div>
+          <div class="person"><div class="top"><span class="name">Hooman Misaghi</span><span class="role">PhD · Auckland</span></div><div class="q">"Artificial Intelligence Enabled IVF"</div><div class="st">Active · Velocity 100K winner · WyldBloom founding student</div></div>
+          <div class="person"><div class="top"><span class="name">Grace Donaldson</span><span class="role">PhD · Auckland</span></div><div class="q">"Green Sperm: Improving sperm assessment using AI"</div><div class="st">Active · Computer vision / torchvision</div></div>
+          <div class="person"><div class="top"><span class="name">Andrea Grecu</span><span class="role">Prospective · Auckland</span></div><div class="q">"Approximate Bayesian computation — MutSimABC"</div><div class="st">Prospective · MSc completed under Dr Allen Rodrigo</div></div>
+          <div class="person"><div class="top"><span class="name">Zeyu Liu</span><span class="role">MSc · Massey</span></div><div class="q">"Writing up — thesis drafts under review"</div><div class="st">Active · Co-supervisor: Sergio Scholich</div></div>
+          <div class="mentoring-note">Postdoctoral mentoring</div>
+          <div class="person"><div class="top"><span class="name">Dr Alex Trevarton</span><span class="role">Ngā Puanga Pūtaiao Fellow</span></div><div class="q">"Leveraging AI to explore breast density and Wāhine Māori health equity"</div><div class="st">Nick is named primary mentor · Trevarton's fellowship achievement</div></div>
+          <div class="person"><div class="top"><span class="name">Dr Hossein Jahedi</span><span class="role">Cancer Society Postdoc</span></div><div class="q">"Immune-mediated chemoresistance in triple-negative breast cancer"</div><div class="st">Nick is statistical mentor</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 Publications -->
+    <section class="block" id="publications">
+      <div class="block-head">
+        <span class="block-num">03</span>
+        <h2>Selected <em>work</em></h2>
+        <span class="block-sub">tagged by where it landed</span>
+      </div>
+      <table class="pubtable">
+        <thead><tr><th>Title</th><th class="col-year">Year</th><th class="col-tags">Translational outcome</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><div class="pub-title">Improving Breast Cancer Detection in Higher Risk Women: Multi-Modality Imaging Evaluation</div><div class="pub-meta">Clinical Radiology</div></td>
+            <td class="col-year"><span class="pub-meta">2025</span></td>
+            <td class="col-tags"><div class="pub-tags"><span class="arc-tag arc-policy">policy</span><span class="arc-tag arc-product">product</span></div></td>
+          </tr>
+          <tr>
+            <td><div class="pub-title">Accurate machine learning model for human embryo morphokinetic stage detection</div><div class="pub-meta">Reproductive BioMedicine Online</div></td>
+            <td class="col-year"><span class="pub-meta">2024</span></td>
+            <td class="col-tags"><div class="pub-tags"><span class="arc-tag arc-patent">patent-pending</span><span class="arc-tag arc-product">product</span></div></td>
+          </tr>
+          <tr>
+            <td><div class="pub-title">Analysis of HER2-Low Breast Cancer in Aotearoa NZ: Nationwide Cohort Study</div><div class="pub-meta">Journal of Clinical Oncology</div></td>
+            <td class="col-year"><span class="pub-meta">2024</span></td>
+            <td class="col-tags"><div class="pub-tags"><span class="arc-tag arc-policy">policy</span></div></td>
+          </tr>
+          <tr>
+            <td><div class="pub-title">A new model of reproductive aging: follicular decline and ovarian reserve</div><div class="pub-meta">&gt;700 citations · adopted into Canadian Health Service guidelines</div></td>
+            <td class="col-year"><span class="pub-meta">2008</span></td>
+            <td class="col-tags"><div class="pub-tags"><span class="arc-tag arc-guideline">guideline</span></div></td>
+          </tr>
+          <tr>
+            <td><div class="pub-title">VectraDA: Multi-biomarker disease activity test for rheumatoid arthritis</div><div class="pub-meta">Primary paper · &gt;240 citations · run on 1M+ patients</div></td>
+            <td class="col-year"><span class="pub-meta">—</span></td>
+            <td class="col-tags"><div class="pub-tags"><span class="arc-tag arc-patent">US Pat 9,200,324</span><span class="arc-tag arc-product">1M+</span></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 04 Join -->
+    <section class="block" id="join">
+      <div class="block-head">
+        <span class="block-num">04</span>
+        <h2>Join the <em>lab</em></h2>
+      </div>
+      <div class="join">
+        <div>
+          <div class="join-lead">If a method can't survive messy data, it doesn't belong in the toolkit. I take students who want to build things that <em>leave the building</em>.</div>
+          <a href="mailto:n.knowlton@auckland.ac.nz" class="join-btn">n.knowlton@auckland.ac.nz →</a>
+        </div>
+        <div>
+          <ul>
+            <li>PhD and MSc across Massey &amp; Auckland — treated as one methods and manuscript-development environment</li>
+            <li>Round-robin shared meetings, shared datasets, cross-institutional co-supervision</li>
+            <li>Real translational targets: patents, clinic pilots, national KPIs, deployed products</li>
+          </ul>
+          <div class="send"><ul>
+            <li>Send: CV, a short research statement, and academic transcript</li>
+          </ul></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <h4>Collaborate on translational methods that survive reality.</h4>
+      <p style="color:var(--text-2); font-size:12px; margin-top:10px;">n.knowlton@auckland.ac.nz</p>
+    </div>
+    <div><h4>Lab</h4><ul><li><a href="#research">Research</a></li><li><a href="#people">People</a></li><li><a href="#publications">Publications</a></li><li><a href="#join">Join the Lab</a></li></ul></div>
+    <div><h4>Connect</h4><ul><li><a href="#">Google Scholar</a></li><li><a href="#">ORCID</a></li><li><a href="#">GitHub</a></li><li><a href="#">LinkedIn</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="https://wyldbloom.ai" target="_blank" style="color:var(--cyan)">WyldBloom →</a></li><li><a href="#">Massey University</a></li><li><a href="#">University of Auckland</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Knowlton Lab · Massey University &amp; University of Auckland</span>
+    <a href="https://wyldbloom.ai" target="_blank" class="wb-footer"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg> WyldBloom.ai</a>
+  </div>
+</footer>
+
+</body>
+</html>

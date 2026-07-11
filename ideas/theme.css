@@ -1,0 +1,59 @@
+/* ==========================================================================
+   Knowlton Lab — Shared Theme  ·  Palette: "Slate" (muted steel)
+   Single source of truth. Every page links this file. Change colours HERE
+   and the whole site follows. Do not hardcode colours in page files.
+   ========================================================================== */
+
+:root {
+  /* --- Surfaces (muted blue-grey charcoal — lighter than pure black) --- */
+  --bg: #232830;            /* page background */
+  --bg-2: #1e232b;          /* footer / recessed bands */
+  --surface: #2b313a;       /* raised panels, stat cards */
+  --card: #2e343e;          /* content cards, rows */
+
+  /* --- Lines --- */
+  --border: rgba(255,255,255,0.10);
+  --border-strong: rgba(255,255,255,0.20);
+  --rule: rgba(255,255,255,0.15);
+
+  /* --- Text --- */
+  --text: #eae6de;          /* primary */
+  --text-2: #a7a89f;        /* secondary / body */
+  --text-3: #6f7178;        /* muted / captions */
+
+  /* --- Accent (crimson) --- */
+  --accent: #e63946;
+  --accent-hi: #ff5a6a;
+  --accent-subtle: rgba(230,57,70,0.10);
+  --accent-glow: rgba(230,57,70,0.22);
+
+  /* --- Secondary accents --- */
+  --warm: #e9c46a;          /* gold — emphasis, sub-taglines */
+  --cyan: #4fc3e8;          /* WyldBloom / product links only */
+  --green: #4a9b8f;         /* guideline tag / status */
+
+  /* --- Type --- */
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* --- Motion / shape --- */
+  --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.45);
+
+  /* --- Translational-outcome tag colours (used on every page) --- */
+  --tag-patent-bg: rgba(230,57,70,0.12);   --tag-patent-fg: var(--accent);   --tag-patent-bd: rgba(230,57,70,0.22);
+  --tag-policy-bg: rgba(233,196,106,0.12); --tag-policy-fg: var(--warm);     --tag-policy-bd: rgba(233,196,106,0.22);
+  --tag-product-bg: rgba(79,195,232,0.10); --tag-product-fg: var(--cyan);    --tag-product-bd: rgba(79,195,232,0.22);
+  --tag-guideline-bg: rgba(74,155,143,0.12); --tag-guideline-fg: var(--green); --tag-guideline-bd: rgba(74,155,143,0.22);
+  --tag-teaching-bg: rgba(255,255,255,0.05); --tag-teaching-fg: var(--text-2); --tag-teaching-bd: var(--border);
+}
+
+/* Shared tag classes — reference these on any page so tags stay consistent */
+.arc-tag { font-family:var(--font-mono); font-size:9px; padding:3px 8px; border-radius:3px; font-weight:500; letter-spacing:0.03em; height:fit-content; white-space:nowrap; }
+.arc-patent    { background:var(--tag-patent-bg);    color:var(--tag-patent-fg);    border:1px solid var(--tag-patent-bd); }
+.arc-policy    { background:var(--tag-policy-bg);    color:var(--tag-policy-fg);    border:1px solid var(--tag-policy-bd); }
+.arc-product   { background:var(--tag-product-bg);   color:var(--tag-product-fg);   border:1px solid var(--tag-product-bd); }
+.arc-guideline { background:var(--tag-guideline-bg); color:var(--tag-guideline-fg); border:1px solid var(--tag-guideline-bd); }
+.arc-teaching  { background:var(--tag-teaching-bg);  color:var(--tag-teaching-fg);  border:1px solid var(--tag-teaching-bd); }
