@@ -1,159 +1,65 @@
 ---
-import { publications } from "../data/publications";
-import {
-  homeContent,
-  pageMeta,
-  siteMeta,
-  uiText,
-  type Locale
-} from "../data/site";
+import { homeContent, type Locale } from "../data/site";
+import { outcomeClass, researchStreams } from "../data/sections";
 import { getLocalizedPath } from "../lib/routing";
-
-interface Props {
-  locale: Locale;
-}
-
+interface Props { locale: Locale; }
 const { locale } = Astro.props;
-const content = homeContent[locale];
-const meta = pageMeta.home[locale];
-const ui = uiText[locale];
-const featuredPublications = publications.slice(0, 3);
+const c = homeContent;
 ---
+<section class="hero shell-wide">
+  <p class="kicker">{c.kicker}</p>
+  <h1>{c.titleBefore} <em>{c.titleAccent}</em> {c.titleAfter}</h1>
+  <div class="hero-lead">
+    <div><strong>{c.tagline}</strong><p>{c.lead}</p></div>
+    <div class="hero-byline"><b>Dr Nicholas Knowlton</b>{c.byline.map((line) => <span>{line}</span>)}</div>
+  </div>
+</section>
 
-<section class="shell py-10 sm:py-14">
-  <div class="grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
-    <article class="panel relative overflow-hidden px-6 py-8 sm:px-8 sm:py-10">
-      <div class="absolute right-[-4rem] top-[-4rem] h-48 w-48 rounded-full bg-coral-400/28 blur-3xl"></div>
-      <div class="absolute bottom-[-5rem] left-[14rem] h-56 w-56 rounded-full bg-aqua-400/26 blur-3xl"></div>
-      <p class="eyebrow">{meta.eyebrow}</p>
-      <h1 class="mt-4 max-w-4xl text-5xl leading-[1.05] text-sand-100 sm:text-6xl">
-        {content.title}
-      </h1>
-      <p class="muted-copy mt-6 max-w-3xl text-lg">{content.lead}</p>
+<div class="editorial-layout shell-wide">
+  <aside class="index-rail">
+    <span class="mono-label">In this issue</span>
+    <a href="#research">01 Research streams</a><a href="#wyldbloom">02 WyldBloom</a><a href="#people">03 People</a><a href="#work">04 Selected work</a><a href="#join">05 Join the lab</a>
+    <div class="rail-stats">{c.stats.map((stat) => <div><strong>{stat.value}</strong><span>{stat.label}</span></div>)}</div>
+  </aside>
+  <div class="issue-content">
+    <section class="issue-section" id="research">
+      <header class="section-head"><span>01</span><h2>What the lab is <em>working on</em></h2><small>active streams</small></header>
+      {researchStreams.map((stream) => <article class="stream-row"><b>{stream.area}</b><div><h3>{stream.question}</h3><p>{stream.summary}</p></div><div class="tag-list">{stream.outcomes.map((tag) => <span class:list={["outcome-tag", outcomeClass[tag] ?? "tag-teaching"]}>{tag}</span>)}</div></article>)}
+      <a class="text-link" href={getLocalizedPath(locale, "research")}>Read the full research cases →</a>
+    </section>
 
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a class="cta-primary" href={getLocalizedPath(locale, content.primaryCta.href)}>
-          {content.primaryCta.label}
-        </a>
-        <a class="cta-secondary" href={getLocalizedPath(locale, content.secondaryCta.href)}>
-          {content.secondaryCta.label}
-        </a>
-        <a class="cta-secondary" href={getLocalizedPath(locale, content.tertiaryCta.href)}>
-          {content.tertiaryCta.label}
-        </a>
+    <section class="issue-section wyld-feature" id="wyldbloom">
+      <header class="section-head"><span>02</span><h2>Research that <em>left the building</em></h2><small>WyldBloom</small></header>
+      <div class="wyld-intro"><img src="/media/wyldbloom-embryo.png" alt="Microscopy image of a developing human embryo" width="256" height="282" loading="lazy"/><div><p class="mono-label cyan">{c.wyldBloom.eyebrow}</p><h3>{c.wyldBloom.title}</h3><p>{c.wyldBloom.body}</p><a class="wyld-button" href={c.wyldBloom.href} target="_blank" rel="noreferrer">Visit WyldBloom ↗</a></div></div>
+      <div class="video-frame">
+        <video id="wyld-video" muted loop playsinline preload="metadata" poster="/media/wyldbloom-video-poster.png" aria-label={c.wyldBloom.videoLabel}><source src="/media/wyldbloom-embryo-review.mp4" type="video/mp4" /></video>
+        <span>AI-derived morphology · developmental observations</span>
       </div>
+    </section>
 
-      <div class="mt-10 grid gap-3 sm:grid-cols-3">
-        {content.stats.map((stat) => (
-          <div class="rounded-[1.4rem] border border-white/10 bg-white/[0.04] px-4 py-4 shadow-sm transition hover:-translate-y-0.5 hover:bg-white/[0.07]">
-            <div class="text-3xl font-semibold text-sand-100">{stat.value}</div>
-            <div class="mt-1 text-sm text-sand-100/72">{stat.label}</div>
-          </div>
-        ))}
-      </div>
-    </article>
+    <section class="issue-section" id="people">
+      <header class="section-head"><span>03</span><h2>One cohort, <em>two institutions</em></h2><small>selected people</small></header>
+      <div class="people-grid">{c.selectedPeople.map((person) => <article class="person-row"><div><b>{person.name}</b><span>{person.role}</span></div><p>“{person.question}”</p></article>)}</div>
+      <a class="text-link" href={getLocalizedPath(locale, "students")}>Meet the full cohort →</a>
+    </section>
 
-    <aside class="panel px-6 py-8 sm:px-7">
-      <p class="eyebrow">{ui.currentFocus}</p>
-      <h2 class="mt-4 text-3xl text-sand-100">Programmes built for messy data and real decisions.</h2>
-      <ul class="mt-6 space-y-4">
-        {content.focusItems.map((item) => (
-          <li class="flex gap-3">
-            <span class="mt-2 h-2.5 w-2.5 rounded-full bg-gold-300"></span>
-            <span class="text-base leading-7 text-sand-100/80">{item}</span>
-          </li>
-        ))}
-      </ul>
+    <section class="issue-section" id="work">
+      <header class="section-head"><span>04</span><h2>Selected <em>work</em></h2><small>tagged by where it landed</small></header>
+      <div class="publication-table">{c.featuredPublications.map((pub) => <a class="publication-row" href={pub.href} target="_blank" rel="noreferrer"><div><b>{pub.title}</b><span>{pub.venue}</span></div><time>{pub.year}</time><div class="tag-list">{pub.outcomes.map((tag) => <span class:list={["outcome-tag", outcomeClass[tag] ?? "tag-teaching"]}>{tag}</span>)}</div></a>)}</div>
+      <a class="text-link" href={getLocalizedPath(locale, "publications")}>View publications →</a>
+    </section>
 
-      <div class="mt-8 flex flex-wrap gap-2">
-        {siteMeta.institutions.map((institution) => (
-          <span class="chip">{institution}</span>
-        ))}
-      </div>
-    </aside>
+    <section class="issue-section join-strip" id="join"><header class="section-head"><span>05</span><h2>Join the <em>lab</em></h2></header><div><h3>If a method can't survive messy data, it doesn't belong in the toolkit.</h3><p>I take students who want to build things that leave the building.</p><a class="primary-button" href={getLocalizedPath(locale, "join")}>How to join →</a></div></section>
   </div>
-</section>
+</div>
 
-<section class="shell pb-10">
-  <div class="section-grid">
-    {content.pillars.map((pillar) => (
-      <article class="panel px-6 py-6 transition hover:-translate-y-0.5 hover:border-aqua-400/25">
-        <p class="eyebrow">{pillar.eyebrow}</p>
-        <h2 class="card-title mt-3">{pillar.title}</h2>
-        <p class="muted-copy mt-3">{pillar.body}</p>
-        <a
-          class="mt-6 inline-flex text-sm font-semibold text-aqua-400 hover:text-aqua-400/80"
-          href={getLocalizedPath(locale, pillar.href)}
-        >
-          {ui.exploreAll}
-        </a>
-      </article>
-    ))}
-  </div>
-</section>
-
-<section class="shell pb-10">
-  <div class="mb-5 flex items-end justify-between gap-4">
-    <div>
-      <p class="eyebrow">{ui.selectedWork}</p>
-      <h2 class="section-title mt-3 text-sand-100">Publications are now part of the site, not hidden behind a profile link.</h2>
-    </div>
-    <a
-      class="hidden text-sm font-semibold text-aqua-400 hover:text-aqua-400/80 sm:inline-flex"
-      href={getLocalizedPath(locale, "publications")}
-    >
-      {ui.exploreAll}
-    </a>
-  </div>
-
-  <div class="section-grid">
-    {featuredPublications.map((publication) => (
-      <article class="panel px-6 py-6 transition hover:-translate-y-0.5 hover:border-aqua-400/25">
-        <div class="flex items-center justify-between gap-4">
-          <span class="chip">{publication.year}</span>
-          <span class="text-xs uppercase tracking-[0.18em] text-sand-100/72">{publication.venue}</span>
-        </div>
-        <h3 class="mt-5 text-2xl text-sand-100">{publication.title}</h3>
-        <p class="muted-copy mt-4">{publication.summary}</p>
-        <div class="mt-5 flex flex-wrap gap-2">
-          {publication.tags.map((tag) => (
-            <span class="chip">{tag}</span>
-          ))}
-        </div>
-        <a
-          class="mt-6 inline-flex text-sm font-semibold text-aqua-400 hover:text-aqua-400/80"
-          href={publication.href}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {ui.readAbstract}
-        </a>
-      </article>
-    ))}
-  </div>
-</section>
-
-<section class="shell pb-16">
-  <div class="panel grid gap-6 px-6 py-8 sm:px-8 lg:grid-cols-[1fr_0.9fr]">
-    <div>
-      <p class="eyebrow">Profiles and contact</p>
-      <h2 class="section-title mt-3 text-sand-100">Cross-institutional work, one cleaner front door.</h2>
-      <p class="muted-copy mt-4 max-w-2xl">
-        The site now brings research themes, publications, teaching resources, and supervision into one cohesive experience while keeping external profile links easy to reach.
-      </p>
-    </div>
-
-    <div class="grid gap-3 sm:grid-cols-2">
-      {siteMeta.socialLinks.map((link) => (
-        <a
-          href={link.href}
-          class="rounded-[1.35rem] border border-white/10 bg-white/5 px-4 py-4 text-sm text-sand-100/72 transition hover:border-coral-400/35 hover:text-sand-100"
-          target="_blank"
-          rel="noreferrer"
-        >
-          {link.label}
-        </a>
-      ))}
-    </div>
-  </div>
-</section>
+<script is:inline>
+  (() => {
+    const video = document.querySelector('#wyld-video');
+    if (!video || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) video.play().catch(() => {}); else video.pause();
+    }, { threshold: 0.35 });
+    observer.observe(video);
+  })();
+</script>

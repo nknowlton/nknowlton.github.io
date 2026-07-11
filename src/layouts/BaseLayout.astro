@@ -7,7 +7,6 @@ import {
   defaultLocale,
   pageMeta,
   siteMeta,
-  uiText,
   type Locale,
   type PageSlug
 } from "../data/site";
@@ -23,7 +22,6 @@ const meta = pageMeta[page][locale];
 const slug = page === "home" ? "" : page;
 const canonical = getCanonicalUrl(locale, slug);
 const alternates = getAlternateLinks(slug);
-const ui = uiText[locale];
 ---
 
 <!doctype html>
@@ -34,7 +32,7 @@ const ui = uiText[locale];
     <title>{`${meta.title} | ${siteMeta.name}`}</title>
     <meta name="description" content={meta.description} />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#09111d" />
+    <meta name="theme-color" content="#232830" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="canonical" href={canonical} />
     {alternates.map((alternate) => (
@@ -61,14 +59,6 @@ const ui = uiText[locale];
   </head>
   <body>
     <SiteHeader locale={locale} currentPage={page === "home" ? undefined : page} />
-    {locale !== defaultLocale && (
-      <div class="shell pt-6">
-        <div class="rounded-[1.5rem] border border-aqua-400/20 bg-aqua-400/8 px-5 py-4 text-sm text-sand-100/78">
-          <strong class="mr-2 text-sand-100">{ui.localeNoticeTitle}</strong>
-          {ui.localeNoticeBody}
-        </div>
-      </div>
-    )}
     <main>
       <slot />
     </main>
