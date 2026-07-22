@@ -11,7 +11,7 @@ export const researchStreams = [
     summary: "Multi-modality imaging evaluation, nationwide HER2-Low cohort analysis, breast density AI, and Wāhine Māori health equity.",
     problem: "Screening data combine different modalities, referral patterns, clinical contexts, and population-level inequities.",
     method: "Risk modelling, population cohort analysis, explainable imaging AI, and deployment-aware validation.",
-    landed: "Private screening evaluation, national evidence, policy-relevant measures, and clinically useful decision support.",
+    landed: "Led the analysis for the 30,000 Voices national breast cancer report, which shaped ~half of NZ's national breast cancer KPIs.",
     outcomes: ["policy", "product", "guideline"]
   },
   {
@@ -23,12 +23,12 @@ export const researchStreams = [
     outcomes: ["patent", "product"]
   },
   {
-    area: "Adherence", question: "Can we detect adherence failure before it becomes recurrence?",
-    summary: "Statistical systems for tracking and improving endocrine therapy adherence in breast cancer patients.",
-    problem: "Treatment effectiveness depends on sustained adherence, but failure is often visible only after the clinical consequences emerge.",
-    method: "Registry-linked longitudinal analysis and interpretable statistical monitoring with clinical collaborators.",
-    landed: "Evidence designed to support better follow-up, service decisions, and patient outcomes.",
-    outcomes: ["policy", "cohort"]
+    area: "Fertility practice impact", question: "Can AI and automation reduce IVF transfer burden and reclaim embryologist time?",
+    summary: "Cohort-relative embryo ranking and lab automation tools now running in NZ fertility clinics.",
+    problem: "Embryo selection is subjective, time-pressured, and burdened by manual paperwork that scales poorly across clinics.",
+    method: "Patent-pending cohort-relative embryo ranking on a 45K-embryo, hardware-agnostic dataset, plus lab automation reducing transfers and administrative load.",
+    landed: "Patent-pending embryo ranking and lab automation tools now running in NZ fertility clinics, reducing transfers and reclaiming embryologist time.",
+    outcomes: ["patent", "product"]
   },
   {
     area: "Reproducibility", question: "Can a method be trusted if no one can reproduce it?",
@@ -41,11 +41,11 @@ export const researchStreams = [
 ] as const;
 
 export const aboutContent = {
-  intro: "The Knowlton Lab develops applied statistics and machine learning for translational biomedical problems. The test is not whether a method performs on a curated benchmark, but whether it remains interpretable, reproducible, and useful once it leaves the sandbox.",
+  intro: "The Knowlton Lab builds applied statistics and machine learning for translational biomedical problems. The test is not whether a method performs on a curated benchmark, but whether it remains interpretable, reproducible, and useful once it leaves the sandbox.",
   principles: [
     { title: "Translational first", body: "Frame projects around the decisions, workflows, and deployment constraints encountered in practice." },
     { title: "Interpretability by design", body: "Build methods that collaborators, clinicians, and domain experts can inspect and explain." },
-    { title: "One connected practice", body: "Treat research, teaching, supervision, and citizenship as mutually reinforcing work." }
+    { title: "Research that teaches. Teaching that builds.", body: "Treat research, teaching, supervision, and citizenship as mutually reinforcing work." }
   ],
   affiliations: ["University of Auckland", "Massey University"]
 } as const;

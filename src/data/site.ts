@@ -70,8 +70,7 @@ export const homeContent = {
   stats: [
     { value: "2", label: "US patents granted" },
     { value: "1M+", label: "patients monitored with VectraDA" },
-    { value: "~50%", label: "of NZ breast cancer KPIs shaped by 30,000 Voices" },
-    { value: "2", label: "institutions, one cohort" }
+    { value: "~50%", label: "of NZ breast cancer KPIs shaped by 30,000 Voices" }
   ],
   wyldBloom: {
     eyebrow: "Research into practice · WyldBloom",
