@@ -80,7 +80,7 @@ export const teachingContent = {
     { code: "161.762", title: "Multivariate Analysis for Big Data", href: "https://www.massey.ac.nz/study/courses/multivariate-analysis-for-big-data-161762/", resources: "/161762/" },
     { code: "161.777", title: "Practical Data Mining", href: "https://www.massey.ac.nz/study/courses/practical-data-mining-161777/", resources: "/161777/" },
     { code: "161.101", title: "Statistics", href: "https://www.massey.ac.nz/study/courses/", resources: null },
-    { code: "297.101", title: "Statistical Data Science", href: "https://www.massey.ac.nz/study/courses/statistical-data-science-297101/", resources: null }
+    { code: "297.101", title: "Statistical Data Science", href: "https://www.massey.ac.nz/study/courses/statistical-data-science-297101/", resources: "/297101/" }
   ]
 } as const;
 
