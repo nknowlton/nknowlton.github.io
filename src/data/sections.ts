@@ -57,7 +57,10 @@ export const peopleContent = {
       ["Yuting Yang", "PhD · Auckland", "Histological and molecular subtypes of breast cancer in NZ women", "https://www.linkedin.com/in/yang-yuting0501/"],
       ["Rooshan Ghous", "PhD · Massey", "Equity by Design: a code-to-bedside pathway for breast cancer care in NZ", "https://www.linkedin.com/in/rooshan-ghous-9a4a5036/"],
       ["Reihaneh Hosseini", "PhD · Massey", "AI-driven breast cancer screening equity for Aotearoa", "https://www.linkedin.com/in/reihaneh-hosseini-122836237/"],
-      ["Duhita Dey", "PhD · Auckland", "Breast cancer incidence, screening, workforce, and economics", "https://www.linkedin.com/in/duhita-dey-359a06120/"]
+      ["Duhita Dey", "PhD · Auckland", "Breast cancer incidence, screening, workforce, and economics", "https://www.linkedin.com/in/duhita-dey-359a06120/"],
+      ["Miaochun Cai", "PhD · Auckland", "Development and Validation of Time-to-Event Models to Predict Recurrence of Ductal Carcinoma In Situ in New Zealand Women"],
+      ["Andrea Grecu", "PhD · Auckland", "Decoding Tumour Genomic Instability from Histopathology in Aotearoa New Zealand", "https://www.linkedin.com/in/andrea-maria-grecu-649147254/"],
+      ["Meike Witschel", "PhD · Auckland", "Early-onset breast cancer: spatial tumour ecosystems and microbial signatures"]
     ]},
     { title: "Reproductive AI & methods", people: [
       ["Hooman Misaghi", "PhD · Auckland", "Artificial Intelligence Enabled IVF", "https://www.linkedin.com/in/hooman-misaghi/"],
