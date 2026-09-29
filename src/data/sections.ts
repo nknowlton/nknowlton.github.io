@@ -62,7 +62,7 @@ export const peopleContent = {
     { title: "Reproductive AI & methods", people: [
       ["Hooman Misaghi", "PhD · Auckland", "Artificial Intelligence Enabled IVF", "https://www.linkedin.com/in/hooman-misaghi/"],
       ["Grace Donaldson", "PhD · Auckland", "Improving sperm assessment using AI", "https://www.linkedin.com/in/grace-donaldson-674a4b346/"],
-      ["Zeyu Liu", "MSc · Massey", "Applied statistical modelling and thesis development"]
+      ["Zeyu Liu", "MSc · Massey", "From Stage Classification to Embryo-Level Continuity in Bovine Time-Lapse Imaging"]
     ]}
   ],
   alumni: [
