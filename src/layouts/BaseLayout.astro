@@ -22,6 +22,62 @@ const meta = pageMeta[page][locale];
 const slug = page === "home" ? "" : page;
 const canonical = getCanonicalUrl(locale, slug);
 const alternates = getAlternateLinks(slug);
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Nicholas Knowlton",
+  alternateName: "Nick Knowlton",
+  honorificPrefix: "Dr",
+  url: siteMeta.site,
+  sameAs: siteMeta.socialLinks.map((link) => link.href),
+  identifier: [
+    {
+      "@type": "PropertyValue",
+      propertyID: "ORCID",
+      value: "0000-0002-7022-3352",
+      url: "https://orcid.org/0000-0002-7022-3352"
+    }
+  ],
+  affiliation: [
+    {
+      "@type": "Organization",
+      name: "Massey University",
+      url: "https://www.massey.ac.nz/"
+    },
+    {
+      "@type": "Organization",
+      name: "University of Auckland",
+      url: "https://www.auckland.ac.nz/"
+    }
+  ],
+  jobTitle: [
+    "Senior Lecturer in Statistics",
+    "Senior Research Fellow"
+  ],
+  knowsAbout: [
+    "biostatistics",
+    "machine learning",
+    "breast cancer",
+    "reproductive medicine",
+    "IVF embryology",
+    "translational science"
+  ]
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteMeta.name,
+  url: siteMeta.site,
+  description: siteMeta.description,
+  inLanguage: ["en-NZ", "mi-NZ"],
+  author: {
+    "@type": "Person",
+    name: "Nicholas Knowlton",
+    url: siteMeta.site
+  }
+};
 ---
 
 <!doctype html>
@@ -31,6 +87,7 @@ const alternates = getAlternateLinks(slug);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{`${meta.title} | ${siteMeta.name}`}</title>
     <meta name="description" content={meta.description} />
+    <meta name="author" content="Dr Nicholas Knowlton" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#232830" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -56,6 +113,8 @@ const alternates = getAlternateLinks(slug);
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:image" content={`${siteMeta.site}/og-image.svg`} />
     <meta name="twitter:image" content={`${siteMeta.site}/og-image.svg`} />
+    <script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
   </head>
   <body>
     <SiteHeader locale={locale} currentPage={page === "home" ? undefined : page} />
