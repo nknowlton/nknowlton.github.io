@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://knowlton.co.nz/sitemap-index.xml
+Sitemap: https://knowlton.co.nz/161251/sitemap.xml
+Sitemap: https://knowlton.co.nz/161324/sitemap.xml
+Sitemap: https://knowlton.co.nz/161762/sitemap.xml
+Sitemap: https://knowlton.co.nz/297101/sitemap.xml
