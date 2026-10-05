@@ -31,10 +31,26 @@ const personJsonLd = {
   honorificPrefix: "Dr",
   url: siteMeta.site,
   sameAs: siteMeta.socialLinks.map((link) => link.href),
-  affiliation: siteMeta.institutions.map((name) => ({
-    "@type": "Organization",
-    name
-  })),
+  identifier: [
+    {
+      "@type": "PropertyValue",
+      propertyID: "ORCID",
+      value: "0000-0002-7022-3352",
+      url: "https://orcid.org/0000-0002-7022-3352"
+    }
+  ],
+  affiliation: [
+    {
+      "@type": "Organization",
+      name: "Massey University",
+      url: "https://www.massey.ac.nz/"
+    },
+    {
+      "@type": "Organization",
+      name: "University of Auckland",
+      url: "https://www.auckland.ac.nz/"
+    }
+  ],
   jobTitle: [
     "Senior Lecturer in Statistics",
     "Senior Research Fellow"
