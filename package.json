@@ -10,7 +10,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "seo:check": "node --test scripts/seo.test.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.3.1",
