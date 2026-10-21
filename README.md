@@ -6,7 +6,7 @@ This repository contains the source for https://knowlton.co.nz, rebuilt with Ast
 
 - Astro for static site generation
 - Tailwind CSS 4 via the Vite plugin
-- Locale-aware routing with English at `/` and a secondary locale at `/mi/`
+- English-only pages at the canonical domain
 
 ## Local development
 
@@ -25,4 +25,4 @@ Use Node 22 or newer. The current local machine image available in this session 
 
 ## Notes
 
-The multilingual setup is route-based and keeps English as the canonical root experience while allowing additional locales to be expanded incrementally.
+The untranslated /mi/ mirror is retired. Former URLs require permanent redirects at the Cloudflare edge.
