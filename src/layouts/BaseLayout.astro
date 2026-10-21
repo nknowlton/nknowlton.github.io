@@ -4,13 +4,12 @@ import "../styles/global.css";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import {
-  defaultLocale,
   pageMeta,
   siteMeta,
   type Locale,
   type PageSlug
 } from "../data/site";
-import { getAlternateLinks, getCanonicalUrl } from "../lib/routing";
+import { getCanonicalUrl } from "../lib/routing";
 
 interface Props {
   locale: Locale;
@@ -21,12 +20,15 @@ const { locale, page } = Astro.props;
 const meta = pageMeta[page][locale];
 const slug = page === "home" ? "" : page;
 const canonical = getCanonicalUrl(locale, slug);
-const alternates = getAlternateLinks(slug);
+const title = page === "home" ? meta.title : `${meta.title} | ${siteMeta.name}`;
 
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": `${siteMeta.site}/#person`,
   name: "Nicholas Knowlton",
+  givenName: "Nicholas",
+  familyName: "Knowlton",
   alternateName: "Nick Knowlton",
   honorificPrefix: "Dr",
   url: siteMeta.site,
@@ -68,10 +70,11 @@ const personJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${siteMeta.site}/#website`,
   name: siteMeta.name,
   url: siteMeta.site,
   description: siteMeta.description,
-  inLanguage: ["en-NZ", "mi-NZ"],
+  inLanguage: "en-NZ",
   author: {
     "@type": "Person",
     name: "Nicholas Knowlton",
@@ -85,31 +88,19 @@ const websiteJsonLd = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{`${meta.title} | ${siteMeta.name}`}</title>
+    <title>{title}</title>
     <meta name="description" content={meta.description} />
     <meta name="author" content="Dr Nicholas Knowlton" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#232830" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="canonical" href={canonical} />
-    {alternates.map((alternate) => (
-      <link
-        rel="alternate"
-        hreflang={alternate.locale}
-        href={alternate.href}
-      />
-    ))}
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href={getCanonicalUrl(defaultLocale, slug)}
-    />
-    <meta property="og:title" content={`${meta.title} | ${siteMeta.name}`} />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content={meta.description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={siteMeta.name} />
-    <meta property="og:locale" content={locale === "en" ? "en_NZ" : "mi_NZ"} />
+    <meta property="og:locale" content="en_NZ" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:image" content={`${siteMeta.site}/og-image.svg`} />
     <meta name="twitter:image" content={`${siteMeta.site}/og-image.svg`} />
