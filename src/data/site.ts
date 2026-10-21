@@ -1,15 +1,12 @@
 import { publications } from "./publications";
 
-export const locales = ["en", "mi"] as const;
+export const locales = ["en"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "en";
-export const secondaryLocales = locales.filter((locale) => locale !== defaultLocale) as Locale[];
-export const localeNames: Record<Locale, string> = { en: "English", mi: "Te Reo Māori" };
 
 export const pageSlugs = ["about", "research", "students", "teaching", "publications", "join"] as const;
 export type PageSlug = (typeof pageSlugs)[number];
 
-export const isLocale = (value: string): value is Locale => locales.includes(value as Locale);
 export const isPageSlug = (value: string): value is PageSlug => pageSlugs.includes(value as PageSlug);
 
 export const siteMeta = {
@@ -39,7 +36,7 @@ export const navigationLabels: Record<PageSlug, string> = {
 };
 
 const meta = {
-  home: ["Knowlton Lab", "Statistical methods with a line of sight to clinical impact."],
+  home: ["Knowlton Lab | Dr Nicholas (Nick) Knowlton", "Knowlton Lab, led by Dr Nicholas Knowlton at Massey University and the University of Auckland, develops biostatistics and AI for breast cancer and IVF."],
   about: ["About", "The approach, affiliations, and values behind the Knowlton Lab."],
   research: ["Research", "Clinical questions, statistical methods, and where the work landed."],
   students: ["People", "Students working across biomedical research, statistical methods, applied AI, and translational science at Massey and Auckland."],
@@ -50,8 +47,7 @@ const meta = {
 
 export const pageMeta = Object.fromEntries(
   Object.entries(meta).map(([key, [title, description]]) => [key, {
-    en: { title, description, eyebrow: key === "home" ? "Translational statistical science" : title },
-    mi: { title, description, eyebrow: key === "home" ? "Translational statistical science" : title }
+    en: { title, description, eyebrow: key === "home" ? "Translational statistical science" : title }
   }])
 ) as Record<"home" | PageSlug, Record<Locale, { title: string; description: string; eyebrow: string }>>;
 

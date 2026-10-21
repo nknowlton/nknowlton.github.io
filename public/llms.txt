@@ -1,0 +1,22 @@
+# Knowlton Lab
+
+> Research and teaching in biostatistics, machine learning and translational biomedical science, led by Dr Nicholas (Nick) Knowlton, affiliated with Massey University and the University of Auckland in Aotearoa New Zealand.
+
+## Research and lab
+- [Home](https://knowlton.co.nz/): Overview of Knowlton Lab.
+- [About](https://knowlton.co.nz/about/): Approach and affiliations.
+- [Research](https://knowlton.co.nz/research/): Breast cancer, reproductive AI and reproducibility.
+- [People](https://knowlton.co.nz/students/): Students and research areas.
+- [Publications](https://knowlton.co.nz/publications/): Selected publications.
+- [Join](https://knowlton.co.nz/join/): Intake and contact information.
+
+## Teaching
+- [Teaching overview](https://knowlton.co.nz/teaching/)
+- [161.251 Regression Modelling](https://knowlton.co.nz/161251/)
+- [161.324 Data Mining](https://knowlton.co.nz/161324/)
+- [161.762 Multivariate Analysis for Big Data](https://knowlton.co.nz/161762/)
+- [297.101 Statistical Data Science](https://knowlton.co.nz/297101/)
+
+## Profiles
+- [ORCID](https://orcid.org/0000-0002-7022-3352)
+- [Google Scholar](https://scholar.google.com/citations?hl=en&user=Bb32KDoAAAAJ)

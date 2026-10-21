@@ -1,0 +1,26 @@
+name: Astro SEO checks
+on:
+  pull_request:
+    paths:
+      - "src/**"
+      - "public/**"
+      - "astro.config.mjs"
+      - "package*.json"
+      - "scripts/**"
+      - ".github/workflows/seo-check.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: ASTRO_TELEMETRY_DISABLED=1 npm run build
+      - run: npm run seo:check
