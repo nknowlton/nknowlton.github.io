@@ -41,6 +41,16 @@ export const researchStreams = [
 ] as const;
 
 export const aboutContent = {
+  profile: {
+    name: "Nick Knowlton",
+    photo: "/media/nick-knowlton.jpg",
+    href: "https://www.massey.ac.nz/massey/expertise/profile.cfm?stref=284822",
+    bio: [
+      "Dr Nick Knowlton is a Senior Lecturer in Statistics at Massey University. His work translates biomedical data into evidence, clinical tools and decision-support systems in breast cancer, reproductive medicine and medical imaging. He led the analysis for the national 30,000 Voices breast cancer report and is co-founder and CEO of WyldBloom, which is translating embryo-imaging research into technology for IVF clinics.",
+      "Nick has previously worked in academic, clinical and commercial diagnostic environments. His earlier work contributed to multivariable diagnostic and risk-assessment systems that progressed into clinical use. This experience shapes his emphasis on external validation, calibration, interpretability, equity and workflow integration. Predictive performance alone is insufficient if a system cannot be trusted, implemented or sustained.",
+      "Nick teaches statistics and applied data science, including in Massey’s Master of Analytics, and supervises postgraduate researchers across biomedical AI, clinical analytics and translational science."
+    ]
+  },
   intro: "The Knowlton Lab builds applied statistics and machine learning for translational biomedical problems. The test is not whether a method performs on a curated benchmark, but whether it remains interpretable, reproducible, and useful once it leaves the sandbox.",
   principles: [
     { title: "Translational first", body: "Frame projects around the decisions, workflows, and deployment constraints encountered in practice." },
