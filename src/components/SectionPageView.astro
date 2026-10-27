@@ -18,7 +18,7 @@ const meta = pageMeta[page][locale];
 
 {page === "publications" && <div class="page-body shell-wide"><div class="publication-table full">{publications.map((pub) => <a class="publication-row" href={pub.href} target="_blank" rel="noreferrer"><div><b>{pub.title}</b><span>{pub.venue}<br />{pub.summary}</span></div><time>{pub.year}</time><div class="tag-list">{pub.outcomes.map((tag) => <span class:list={["outcome-tag", outcomeClass[tag] ?? "tag-teaching"]}>{tag}</span>)}</div></a>)}</div><section class="profile-links"><p>Complete scholarly record</p><a href={siteMeta.socialLinks[2].href} target="_blank" rel="noreferrer">Google Scholar ↗</a><a href={siteMeta.socialLinks[3].href} target="_blank" rel="noreferrer">ORCID ↗</a></section></div>}
 
-{page === "join" && <div class="page-body shell-wide"><section class="join-page"><div><p class="mono-label">Mentorship</p><h2>{joinContent.lead}</h2><p>{joinContent.body}</p><p class="mentoring-note">{joinContent.availability}</p><div class="join-contact-buttons">{siteMeta.emails.map((email) => <a class="primary-button" href={`mailto:${email}`}>{email} →</a>)}</div></div><div><h3>Shared values</h3><ul>{joinContent.values.map((item) => <li>{item}</li>)}</ul><h3>What to send</h3><ul>{joinContent.send.map((item) => <li>{item}</li>)}</ul></div></section></div>}
+{page === "join" && <div class="page-body shell-wide"><section class="join-page"><div><p class="mono-label">Mentorship</p><h2>{joinContent.lead}</h2><p>{joinContent.body}</p><p class="mentoring-note">{joinContent.availability}</p><div class="join-contact-buttons">{siteMeta.emails.map((email) => <a class="primary-button" href={`mailto:${email}`}>{email} →</a>)}</div></div><div><h3>Shared values</h3><ul>{joinContent.values.map((item) => <li>{item}</li>)}</ul><h3>When applications reopen in 2028, send</h3><ul>{joinContent.send.map((item) => <li>{item}</li>)}</ul></div></section></div>}
 
 <style>
   .join-contact-buttons {
@@ -45,5 +45,5 @@ const meta = pageMeta[page][locale];
     text-underline-offset: 3px;
   }
 
-  .student-link:hover { color: var(--accent); }
+  .student-link:hover { color: var(--accent-text); }
 </style>

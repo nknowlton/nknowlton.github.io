@@ -1,6 +1,6 @@
 ---
 import { homeContent, type Locale } from "../data/site";
-import { outcomeClass, researchStreams } from "../data/sections";
+import { joinContent, outcomeClass, researchStreams } from "../data/sections";
 import { getLocalizedPath } from "../lib/routing";
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
@@ -44,12 +44,12 @@ const c = homeContent;
     </section>
 
     <section class="issue-section" id="work">
-      <header class="section-head"><span>04</span><h2>Selected <em>work</em></h2><small>tagged by where it landed</small></header>
+      <header class="section-head"><span>04</span><h2>Selected <em>work</em></h2><small>tagged by subject area</small></header>
       <div class="publication-table">{c.featuredPublications.map((pub) => <a class="publication-row" href={pub.href} target="_blank" rel="noreferrer"><div><b>{pub.title}</b><span>{pub.venue}</span></div><time>{pub.year}</time><div class="tag-list">{pub.outcomes.map((tag) => <span class:list={["outcome-tag", outcomeClass[tag] ?? "tag-teaching"]}>{tag}</span>)}</div></a>)}</div>
       <a class="text-link" href={getLocalizedPath(locale, "publications")}>View publications →</a>
     </section>
 
-    <section class="issue-section join-strip" id="join"><header class="section-head"><span>05</span><h2>Join the <em>lab</em></h2></header><div><h3>If a method can't survive messy data, it doesn't belong in the toolkit.</h3><p>I take students who want to build things that leave the building.</p><a class="primary-button" href={getLocalizedPath(locale, "join")}>How to join →</a></div></section>
+    <section class="issue-section join-strip" id="join"><header class="section-head"><span>05</span><h2>Join the <em>lab</em></h2></header><div><h3>If a method can't survive messy data, it doesn't belong in the toolkit.</h3><p>{joinContent.availability}</p><a class="primary-button" href={getLocalizedPath(locale, "join")}>Next intake: 2028 →</a></div></section>
   </div>
 </div>
 
