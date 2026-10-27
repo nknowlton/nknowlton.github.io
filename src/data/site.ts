@@ -59,7 +59,8 @@ export const homeContent = {
   tagline: "Methods that survive messy data. Proven in the clinic.",
   lead: "Breast cancer risk modelling, endocrine therapy adherence, embryo selection AI, and reproducible research methods — from statistical problem to clinical decision.",
   byline: [
-    "Senior Lecturer, Statistics · Massey University",
+    "Senior Lecturer in Statistics",
+    "Massey University",
     "Translational science · Machine learning",
     "Models used to monitor 1M+ patients"
   ],
