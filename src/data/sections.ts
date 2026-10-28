@@ -80,7 +80,7 @@ export const peopleContent = {
       ["Hooman Misaghi", "PhD · Auckland", "Artificial Intelligence Enabled IVF", "https://www.linkedin.com/in/hooman-misaghi/"],
       ["Grace Donaldson", "PhD · Auckland", "Improving sperm assessment using AI", "https://www.linkedin.com/in/grace-donaldson-674a4b346/"],
       ["Zeyu Liu", "MSc · Massey", "From Stage Classification to Embryo-Level Continuity in Bovine Time-Lapse Imaging"],
-      ["Isabeau Pan", "Honours · Auckland · 2026", "Embryo morphokinetics and morphometrics by maternal age, ploidy and live birth in clinical time-lapse data"]
+      ["Isabeau Pan", "Honours · Auckland · 2026", "Revealing Biological Insights through Interpretable Machine-Learning Models", "https://www.linkedin.com/in/isabeau-pan-b20aa42b7/"]
     ]}
   ],
   alumni: [
