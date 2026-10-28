@@ -1,6 +1,6 @@
 ---
 import { homeContent, type Locale } from "../data/site";
-import { joinContent, outcomeClass, researchStreams } from "../data/sections";
+import { joinContent, outcomeClass, researchStreams, teachingContent } from "../data/sections";
 import { getLocalizedPath } from "../lib/routing";
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
@@ -10,7 +10,7 @@ const c = homeContent;
   <p class="kicker">{c.kicker}</p>
   <h1>{c.titleBefore} <em>{c.titleAccent}</em> {c.titleAfter}</h1>
   <div class="hero-lead">
-    <div><strong>{c.tagline}</strong><p>{c.lead}</p></div>
+    <div><p>{c.lead}</p></div>
     <div class="hero-byline"><b>Dr Nicholas Knowlton</b>{c.byline.map((line) => <span>{line}</span>)}</div>
   </div>
 </section>
@@ -18,8 +18,8 @@ const c = homeContent;
 <div class="editorial-layout shell-wide">
   <aside class="index-rail">
     <span class="mono-label">In this issue</span>
-    <a href="#research">01 Research streams</a><a href="#wyldbloom">02 WyldBloom</a><a href="#people">03 People</a><a href="#work">04 Selected work</a><a href="#join">05 Join the lab</a>
-    <div class="rail-stats">{c.stats.map((stat) => <div><strong>{stat.value}</strong><span>{stat.label}</span></div>)}</div>
+    <a href="#research">01 Research streams</a><a href="#wyldbloom">02 WyldBloom</a><a href="#people">03 People</a><a href="#work">04 Selected work</a><a href="#teaching">05 Teaching</a><a href="#join">06 Join the lab</a>
+    <div class="rail-stats">{c.stats.map((stat) => <div><strong>{stat.value}</strong><a href={stat.href} target="_blank" rel="noreferrer">{stat.label} ↗</a></div>)}</div>
   </aside>
   <div class="issue-content">
     <section class="issue-section" id="research">
@@ -49,7 +49,14 @@ const c = homeContent;
       <a class="text-link" href={getLocalizedPath(locale, "publications")}>View publications →</a>
     </section>
 
-    <section class="issue-section join-strip" id="join"><header class="section-head"><span>05</span><h2>Join the <em>lab</em></h2></header><div><h3>If a method can't survive messy data, it doesn't belong in the toolkit.</h3><p>{joinContent.availability}</p><a class="primary-button" href={getLocalizedPath(locale, "join")}>Next intake: 2028 →</a></div></section>
+    <section class="issue-section" id="teaching">
+      <header class="section-head"><span>05</span><h2>Teaching that <em>builds</em></h2><small>Massey courses</small></header>
+      <div class="join-strip-body"><h3>{teachingContent.philosophy}</h3><p>{teachingContent.body}</p></div>
+      <div class="course-strip">{teachingContent.courses.map((course, i) => <a href={`${getLocalizedPath(locale, "teaching")}#course-${i + 1}`}><span>{course.code}</span>{course.title}</a>)}</div>
+      <a class="text-link" href={getLocalizedPath(locale, "teaching")}>Courses and hosted materials →</a>
+    </section>
+
+    <section class="issue-section join-strip" id="join"><header class="section-head"><span>06</span><h2>Join the <em>lab</em></h2></header><div><h3>PhD and MSc students work across Massey and Auckland as one cohort.</h3><p>{joinContent.availability}</p><a class="primary-button" href={getLocalizedPath(locale, "join")}>Next intake: 2028 →</a><p class="collab-line">Clinicians, laboratories, industry and funders: <a href={`${getLocalizedPath(locale, "about")}#collaborate`}>work with the lab →</a></p></div></section>
   </div>
 </div>
 

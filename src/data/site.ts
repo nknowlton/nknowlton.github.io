@@ -56,18 +56,17 @@ export const homeContent = {
   titleBefore: "Statistical methods with a",
   titleAccent: "line of sight",
   titleAfter: "to clinical impact.",
-  tagline: "Methods that survive messy data. Proven in the clinic.",
   lead: "Breast cancer risk modelling, endocrine therapy adherence, embryo selection AI, and reproducible research methods — from statistical problem to clinical decision.",
   byline: [
     "Senior Lecturer in Statistics",
     "Massey University",
     "Translational science · Machine learning",
-    "Models used to monitor 1M+ patients"
+    "Co-inventor, Vectra DA · 1M+ tests"
   ],
   stats: [
-    { value: "3", label: "granted patents (2 US, 1 Canada)" },
-    { value: "1M+", label: "patients monitored with VectraDA" },
-    { value: "~50%", label: "of NZ breast cancer KPIs shaped by 30,000 Voices" }
+    { value: "3", label: "granted patents (2 US, 1 Canada)", href: "https://patents.google.com/patent/US9200324B2/en" },
+    { value: "1M+", label: "Vectra DA rheumatoid arthritis tests run", href: "https://www.businesswire.com/news/home/20210503005375/en/Labcorp-to-Acquire-Myriad-Autoimmunes-Vectra-Testing-Business-From-Myriad-Genetics" },
+    { value: "~50%", label: "of NZ breast cancer KPIs shaped by 30,000 Voices", href: "https://doi.org/10.17608/k6.auckland.19679019" }
   ],
   wyldBloom: {
     eyebrow: "Research into practice · WyldBloom",

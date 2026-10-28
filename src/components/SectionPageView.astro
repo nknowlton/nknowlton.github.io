@@ -8,7 +8,7 @@ const meta = pageMeta[page][locale];
 ---
 <section class="page-hero shell-wide"><p class="kicker">{meta.eyebrow}</p><h1>{meta.title}</h1><p>{meta.description}</p></section>
 
-{page === "about" && <div class="page-body shell-wide"><section class="about-profile"><img src={aboutContent.profile.photo} alt="Dr Nick Knowlton" width="200" height="200" /><div><p class="mono-label">Senior Lecturer in Statistics · Massey University</p><h2>{aboutContent.profile.name}</h2>{aboutContent.profile.bio.map((para) => <p>{para}</p>)}<a class="text-link" href={aboutContent.profile.href} target="_blank" rel="noreferrer">Full Massey profile ↗</a></div></section><section class="prose-lead"><h2>Translational statistical science</h2><p>{aboutContent.intro}</p></section><div class="principle-grid">{aboutContent.principles.map((item, i) => <article><span>0{i + 1}</span><h3>{item.title}</h3><p>{item.body}</p></article>)}</div><section class="split-section"><div><p class="mono-label">Affiliations</p><h2>One research environment across two institutions.</h2></div><ul>{aboutContent.affiliations.map((item) => <li>{item}</li>)}</ul></section></div>}
+{page === "about" && <div class="page-body shell-wide"><section class="about-profile"><img src={aboutContent.profile.photo} alt="Dr Nick Knowlton" width="200" height="200" /><div><p class="mono-label">Senior Lecturer in Statistics · Massey University</p><h2>{aboutContent.profile.name}</h2>{aboutContent.profile.bio.map((para) => <p>{para}</p>)}<a class="text-link" href={aboutContent.profile.href} target="_blank" rel="noreferrer">Full Massey profile ↗</a></div></section><section class="prose-lead"><h2>Translational statistical science</h2><p>{aboutContent.intro}</p></section><div class="principle-grid">{aboutContent.principles.map((item, i) => <article><span>0{i + 1}</span><h3>{item.title}</h3><p>{item.body}</p></article>)}</div><section class="split-section"><div><p class="mono-label">Affiliations</p><h2>One research environment across two institutions.</h2></div><ul>{aboutContent.affiliations.map((item) => <li>{item}</li>)}</ul></section><section class="split-section" id="collaborate"><div><p class="mono-label">Collaborate</p><h2>{aboutContent.collaborate.title}</h2></div><div><p class="collab-body">{aboutContent.collaborate.body}</p><div class="collab-emails">{siteMeta.emails.map((email) => <a href={`mailto:${email}`}>{email} →</a>)}</div></div></section></div>}
 
 {page === "research" && <div class="page-body shell-wide"><div class="case-list">{researchStreams.map((stream, i) => <article class="research-case" id={stream.area === "Reproductive AI" ? "reproductive-ai" : undefined}><header><span>0{i + 1} · {stream.area}</span><h2>{stream.question}</h2><div class="tag-list">{stream.outcomes.map((tag) => <span class:list={["outcome-tag", outcomeClass[tag] ?? "tag-teaching"]}>{tag}</span>)}</div></header><div class="case-arc"><div><b>Clinical problem</b><p>{stream.problem}</p></div><div><b>Statistical method</b><p>{stream.method}</p></div><div><b>Where it landed</b><p>{stream.landed}</p></div></div>{stream.area === "Reproductive AI" && <a class="wyld-button" href={siteMeta.wyldBloom} target="_blank" rel="noreferrer">Explore WyldBloom ↗</a>}</article>)}</div></div>}
 
@@ -51,6 +51,23 @@ const meta = pageMeta[page][locale];
   }
 
   .about-profile .text-link { margin-top: 8px; }
+
+  .collab-body {
+    margin: 0 0 18px;
+    font-size: 17px;
+    color: var(--text-2);
+  }
+
+  .collab-emails a {
+    display: block;
+    padding: 10px 0;
+    border-top: 1px solid var(--border);
+    font: 13px var(--font-mono);
+    color: var(--warm);
+    text-decoration: none;
+  }
+
+  .collab-emails a:hover { text-decoration: underline; }
 
   @media (max-width: 900px) {
     .about-profile { grid-template-columns: 1fr; gap: 22px; }

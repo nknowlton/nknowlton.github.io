@@ -57,7 +57,11 @@ export const aboutContent = {
     { title: "Interpretability by design", body: "Build methods that collaborators, clinicians, and domain experts can inspect and explain." },
     { title: "Research that teaches. Teaching that builds.", body: "Treat research, teaching, supervision, and citizenship as mutually reinforcing work." }
   ],
-  affiliations: ["University of Auckland", "Massey University"]
+  affiliations: ["University of Auckland", "Massey University"],
+  collaborate: {
+    title: "Work with the lab.",
+    body: "The lab works with clinicians, laboratories, industry partners and funders on questions in breast cancer, reproductive medicine and biomedical imaging. Email to discuss a project, a data partnership or funding."
+  }
 } as const;
 
 export const peopleContent = {
